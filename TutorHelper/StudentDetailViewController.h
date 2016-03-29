@@ -21,6 +21,7 @@
     NSString *documentsDir, *dbPath;
     FMDatabase *database;
     
+    IBOutlet UILabel *studentInactiveLbl;
     IBOutlet UILabel *feeStaticLbl;
     IBOutlet UIImageView *histryImg;
     IBOutlet UIButton *editBttn;

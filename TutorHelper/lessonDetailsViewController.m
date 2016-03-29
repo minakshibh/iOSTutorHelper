@@ -87,9 +87,17 @@
     }
     
     NSDictionary*dict=[studentListArray objectAtIndex:indexPath.row ];
+    NSString *feesStr;
+    if([[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_fee"]] isEqualToString:@"<null>"])
+    {
+        feesStr =@"0";
+    }else{
+        feesStr =[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_fee"]];
+    }
+
     
     cell.backgroundColor=[UIColor clearColor];
-    [cell setLabelText:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_name"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_fee"]]];
+    [cell setLabelText:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_name"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]]:[NSString stringWithFormat:@"%@",feesStr]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -107,7 +115,8 @@
     studentObj.address=[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]];
     studentObj.studentContact=[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]];
     studentObj.studentEmail=[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]];
-    
+    studentObj.isActive=[NSString stringWithFormat:@"%@",[dict valueForKey:@"isactive"]];
+
     
     StudentDetailViewController*studentDetailVc=[[StudentDetailViewController alloc]initWithNibName:@"StudentDetailViewController" bundle:[NSBundle mainBundle]];
     studentDetailVc.editBtnHiddn=YES;

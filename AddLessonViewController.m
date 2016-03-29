@@ -14,6 +14,7 @@
 #import "ASIFormDataRequest.h"
 #import "StudentList.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AddStudentViewController.h"
 
 @interface AddLessonViewController ()
 
@@ -176,6 +177,14 @@
     {
         [tempStudentArray addObject:[addStudentList objectAtIndex:k]];
     }
+    if(tempStudentArray.count==0)
+    {
+        UIAlertView*alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"No students have been added to your account yet.Continue to add a new student in order to add some lesson." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add new student", nil];
+        alert.tag = 3;
+        [alert show];
+        return;
+    }
+    
     [studentTableView reloadData];
     [scrollView setContentOffset:CGPointMake(0.0, 0.0) animated:YES];
     
@@ -638,7 +647,7 @@
                 
                 if ([messageStr isEqualToString:@"success"])
                 {
-                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:[NSString stringWithFormat:@"Your Lesson Added successfully."] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:[NSString stringWithFormat:@"Your lesson added successfully."] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alert show];
                     alert.tag=2;
                     webservice=0;
@@ -670,6 +679,13 @@
         startTimeLbl.text=@"";
         endTimeLbl.text=@"";
         [self.navigationController popViewControllerAnimated:YES];
+    }
+    if (alertView.tag==3 && buttonIndex != alertView.cancelButtonIndex)
+    {
+        AddStudentViewController*addStudentVc=[[AddStudentViewController alloc]initWithNibName:@"AddStudentViewController" bundle:[NSBundle mainBundle]];
+        addStudentVc.triggervalue= @"add";
+        addStudentVc.trigger=@"Tutor";
+        [self.navigationController pushViewController: addStudentVc animated:YES];
     }
 }
 - (void)datePickerChanged:(UIDatePicker *)datePicker

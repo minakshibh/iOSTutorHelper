@@ -20,6 +20,7 @@
     NSMutableURLRequest *request;
     IBOutlet UIView *parentInfoBackView;
     UITapGestureRecognizer *tap;
+    IBOutlet UIButton *sameAsParentBtn;
     IBOutlet UILabel *parentIdLbl;
     IBOutlet UILabel *genderLbl;
     IBOutlet UILabel *notesLbl;

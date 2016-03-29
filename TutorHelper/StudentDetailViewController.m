@@ -37,7 +37,12 @@
     feesLbl.text=StudentObj.fees;
     addressLbl.text=StudentObj.address;
     notesLbl.text=StudentObj.notes;
-   
+    studentInactiveLbl.hidden = YES;
+
+    if ([StudentObj.isActive isEqualToString:@"1"]) {
+        studentInactiveLbl.hidden = NO;
+        studentIdLbl.textColor = [UIColor blackColor];
+    }
     if (editBtnHiddn)
     {
         editBttn.hidden=YES;
@@ -51,8 +56,6 @@
         histryImg.hidden=NO;
         histryLbl.hidden=NO;
         historyBtn.hidden=NO;
-        notes.hidden=YES;
-        notesLbl.hidden=YES;
         feeDotsLbl.hidden=YES;
         feesLbl.hidden=YES;
         feeStaticLbl.hidden=YES;

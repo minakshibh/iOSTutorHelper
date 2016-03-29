@@ -10,10 +10,10 @@
 
 @interface ParentMergeViewController : UIViewController
 {
-   UITextField *parentIdTxt;
     IBOutlet UIView *backView;
     IBOutlet UITextField *passwordTxt;
     IBOutlet UIView *passwordBackView;
+    IBOutlet UITextField *parentIdTxt;
     int webservice;
     NSMutableData*webData;
 

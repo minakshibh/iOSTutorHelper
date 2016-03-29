@@ -134,11 +134,11 @@ MBProgressHUD *hud;
     NSString *resultStr = [NSString stringWithFormat:@"%@",[userDetailDict valueForKey:@"result"]];
     if([resultStr isEqualToString:@"0"])
     {
-    year = [[userDetailDict valueForKey:@"invoices"]valueForKey:@"year"];
-    months = [[userDetailDict valueForKey:@"invoices"]valueForKey:@"months"];
-        noOfmonths = [[months valueForKey:@"month"]objectAtIndex:3];
+        year = [[userDetailDict valueForKey:@"invoices"]valueForKey:@"year"];
+        months = [[userDetailDict valueForKey:@"invoices"]valueForKey:@"months"];
+//        noOfmonths = [[months valueForKey:@"month"]objectAtIndex:2];
         
-    [tableView reloadData];
+        [tableView reloadData];
     }
 }
 
@@ -151,11 +151,7 @@ MBProgressHUD *hud;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     for (int i=0; i<year.count; i++) {
-        if(section==0)
-        {
-            
-            return 0;
-        }
+        
         if (section==i) {
            noOfmonths = [[months valueForKey:@"month"]objectAtIndex:i];
         }
@@ -237,10 +233,10 @@ MBProgressHUD *hud;
         NSArray *value,*url;
     NSString *valueStr,*urlStr;
     for (int i=0; i<year.count; i++) {
-        if(indexPath.section==0)
-        {
-            return  cell;
-        }
+//        if(indexPath.section==0)
+//        {
+//            return  cell;
+//        }
         NSLog(@"%ld",(long)indexPath.section);
         NSLog(@"%ld",(long)indexPath.row);
         if (indexPath.section==i) {

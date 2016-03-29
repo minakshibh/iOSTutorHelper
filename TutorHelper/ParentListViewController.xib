@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParentListViewController">
@@ -13,6 +13,7 @@
                 <outlet property="cancelSortCrossImg" destination="YrB-Sa-kF8" id="uIa-Id-Rux"/>
                 <outlet property="filterBackView" destination="N0I-B1-HQc" id="8JN-Lo-yjS"/>
                 <outlet property="filterLbl" destination="6V7-ZB-esT" id="PTf-0r-vvX"/>
+                <outlet property="headerLbl" destination="naa-2C-X15" id="5qf-lH-Ld7"/>
                 <outlet property="parentsListTableView" destination="aKu-P7-Wps" id="Itr-fe-FcD"/>
                 <outlet property="searchTxt" destination="UdI-dQ-qae" id="osF-Tr-kxh"/>
                 <outlet property="sortBackView" destination="ms8-1j-qiN" id="osT-ha-9NI"/>
@@ -257,9 +258,4 @@
         <image name="search-bg.png" width="300" height="31"/>
         <image name="sort-icon.png" width="15" height="15"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

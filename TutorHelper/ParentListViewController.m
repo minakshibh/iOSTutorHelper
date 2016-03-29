@@ -19,6 +19,10 @@
 @synthesize trigger;
 
 - (void)viewDidLoad {
+     if ([trigger isEqualToString:@"all"])
+     {
+         headerLbl.text= @"My Connections";
+     }
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
     [super viewDidLoad];

@@ -242,7 +242,7 @@
             }
             else if (webservice==3){
                 
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Your request to cancel lesson has been submit suceesfully." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Your request to cancel lesson has been submit successfully." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alert show];
                 reasonBackView.hidden=YES;
                 reasonTxtView.text=@"";

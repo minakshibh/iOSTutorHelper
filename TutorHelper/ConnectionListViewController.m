@@ -14,7 +14,7 @@
 #import "ASIFormDataRequest.h"
 #import "ConnectionRequestTableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "StudentRequestViewController.h"
 
 @interface ConnectionListViewController ()
 
@@ -118,14 +118,30 @@
                     webservice=0;
             }
             else if (webservice==2){
-                              [self FetchConnectionList];
+                [self FetchConnectionList];
                 [requestTableView reloadData];
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Your connection request approved successfully,Now please approve corresponding student requests." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                alert.tag=1;
+                [alert show];
             }
             else {
-                          }
+            }
         }
     }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:
+(NSInteger)buttonIndex{
+    if (alertView.tag==1)
+    {
+        StudentRequestViewController*studentReqVc=[[StudentRequestViewController alloc]initWithNibName:@"StudentRequestViewController" bundle:[NSBundle mainBundle]];
+        [self.navigationController pushViewController:studentReqVc animated:YES];
+
+    }
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

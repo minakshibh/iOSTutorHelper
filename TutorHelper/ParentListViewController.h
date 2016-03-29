@@ -18,6 +18,7 @@
 {
     GetDetailCommonView*getDetailView;
     NSMutableData*webData;
+    IBOutlet UILabel *headerLbl;
 
     IBOutlet UITableView *parentsListTableView;
     NSMutableArray*parentListArray;

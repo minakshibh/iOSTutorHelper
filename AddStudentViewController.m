@@ -73,10 +73,11 @@
             feesTxt.hidden=YES;
             addressTxt.hidden=NO;
             addressIconImg.hidden=NO;
+            sameAsParentBtn.hidden=YES;
             
             [addStudentBttn setTitle:@"EDIT" forState:UIControlStateNormal];
 
-            addStudentBttn.frame=CGRectMake(addStudentBttn.frame.origin.x, 260, addStudentBttn.frame.size.width, addStudentBttn.frame.size.height);
+            addStudentBttn.frame=CGRectMake(addStudentBttn.frame.origin.x, 380, addStudentBttn.frame.size.width, addStudentBttn.frame.size.height);
             
             addStudentBackView.frame=CGRectMake(addStudentBackView.frame.origin.x, addStudentBackView.frame.origin.y, addStudentBackView.frame.size.width, addStudentBackView.frame.size.height-100);
             
@@ -686,7 +687,7 @@
                 UIAlertView *alert;
                 
                 if ([triggervalue isEqualToString:@"edit"]) {
-                      alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:[NSString stringWithFormat:@"Student Edit successfuly."] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                      alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:[NSString stringWithFormat:@"Student edit successfuly."] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     
                     if ([fromView isEqualToString:@"studentDetail"])
                     {
@@ -698,7 +699,13 @@
                     }
                 }
                 else{
-                      alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:[NSString stringWithFormat:@"New Student added successfuly."] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    if([trigger isEqualToString:@"Parent"])
+                    {
+                        alert=[[UIAlertView alloc]initWithTitle:@"Congrats!!" message:[NSString stringWithFormat:@"New student added successfully."] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    }
+                    else{
+                         alert=[[UIAlertView alloc]initWithTitle:@"Congrats!!" message:[NSString stringWithFormat:@"Your request has been sent. We will notify you as soon as the Parent will approve the same."] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    }
                     alert.tag=2;
 
                 }

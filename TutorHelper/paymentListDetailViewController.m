@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if ([self.paymentType isEqualToString:@"AddCredit"]) {
-        titleLbl.text = @"Add Credit Details";
+        titleLbl.text = @"Credit Details";
         
     }else{
         titleLbl.text = @"Payment Details";

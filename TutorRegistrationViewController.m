@@ -337,7 +337,7 @@
                 NSString*tutor_id=[userDetailDict valueForKey:@"tutor_id"];
                 [[NSUserDefaults standardUserDefaults]setValue:tutor_id forKey:@"tutor_id"];
                    
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:[NSString stringWithFormat:@"Congratulations, Your account has been created successfuly.Your Tutor Id is %@",tutor_id] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:[NSString stringWithFormat:@"Congrats!!! Your account has been registered with us.Your Tutor Id is %@",tutor_id] delegate:self cancelButtonTitle:@"Get Started!" otherButtonTitles:nil];
                 [alert show];
                 
                 [self saveDataTodtaaBase:userDetailDict];

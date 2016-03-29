@@ -141,7 +141,7 @@
     NSString *abc;
     if([[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_fee"]] isEqualToString:@"<null>"])
     {
-        abc =@"";
+        abc =@"0";
     }else{
         abc =[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_fee"]];
     }
@@ -164,6 +164,7 @@
     studentObj.address=[dict valueForKey:@"student_address"];
     studentObj.studentContact=[dict valueForKey:@"student_contact_info"];
     studentObj.studentEmail=[dict valueForKey:@"student_email"];
+    studentObj.isActive=[NSString stringWithFormat:@"%@",[dict valueForKey:@"isactive"]];
 
     
     StudentDetailViewController*studentDetailVc=[[StudentDetailViewController alloc]initWithNibName:@"StudentDetailViewController" bundle:[NSBundle mainBundle]];

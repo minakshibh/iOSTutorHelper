@@ -181,13 +181,6 @@
     StudentList *studentObj ;
     
     studentObj = (StudentList *)[studentListArray objectAtIndex:indexPath.row];
-    
-    
-//    StudentDetailViewController*studentDetailVc=[[StudentDetailViewController alloc]initWithNibName:@"StudentDetailViewController" bundle:[NSBundle mainBundle]];
-//    studentDetailVc.StudentObj=studentObj;
-//    studentDetailVc.parentObj=parentObj;
-//    
-//    [self.navigationController pushViewController:studentDetailVc  animated:YES];
 }
 
 
