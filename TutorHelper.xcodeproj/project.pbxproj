@@ -353,15 +353,15 @@
 		97E99C641B26B89500A6B7D9 /* paymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E99C621B26B89500A6B7D9 /* paymentViewController.m */; };
 		97E99C651B26B89500A6B7D9 /* paymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97E99C631B26B89500A6B7D9 /* paymentViewController.xib */; };
 		97E99C691B26BF9900A6B7D9 /* updateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 97E99C681B26BF9900A6B7D9 /* updateRequest.m */; };
-		D90E1F8E1BD9FE2100444F2A /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = D90E1F8D1BD9FE2100444F2A /* download.png */; settings = {ASSET_TAGS = (); }; };
-		D90E1F931BDA0A3C00444F2A /* downloadInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D90E1F911BDA0A3C00444F2A /* downloadInvoiceViewController.m */; settings = {ASSET_TAGS = (); }; };
-		D90E1F941BDA0A3C00444F2A /* downloadInvoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90E1F921BDA0A3C00444F2A /* downloadInvoiceViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		D90E1F961BDA3E3100444F2A /* cross1.png in Resources */ = {isa = PBXBuildFile; fileRef = D90E1F951BDA3E3100444F2A /* cross1.png */; settings = {ASSET_TAGS = (); }; };
+		D90E1F8E1BD9FE2100444F2A /* download.png in Resources */ = {isa = PBXBuildFile; fileRef = D90E1F8D1BD9FE2100444F2A /* download.png */; };
+		D90E1F931BDA0A3C00444F2A /* downloadInvoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D90E1F911BDA0A3C00444F2A /* downloadInvoiceViewController.m */; };
+		D90E1F941BDA0A3C00444F2A /* downloadInvoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90E1F921BDA0A3C00444F2A /* downloadInvoiceViewController.xib */; };
+		D90E1F961BDA3E3100444F2A /* cross1.png in Resources */ = {isa = PBXBuildFile; fileRef = D90E1F951BDA3E3100444F2A /* cross1.png */; };
 		D959D10E1B5E2AF50033390D /* PDFReportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D959D10C1B5E2AF50033390D /* PDFReportsViewController.m */; };
 		D959D10F1B5E2AF50033390D /* PDFReportsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D959D10D1B5E2AF50033390D /* PDFReportsViewController.xib */; };
-		D95A6A8B1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D95A6A891BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		D95A6A8C1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D95A6A8A1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
-		D9EB272F1BDA621600B77B17 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB272E1BDA621600B77B17 /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		D95A6A8B1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D95A6A891BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.m */; };
+		D95A6A8C1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D95A6A8A1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.xib */; };
+		D9EB272F1BDA621600B77B17 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB272E1BDA621600B77B17 /* MBProgressHUD.m */; };
 		D9FEBD661B58E76700BF9D72 /* StatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FEBD641B58E76700BF9D72 /* StatementViewController.m */; };
 		D9FEBD671B58E76700BF9D72 /* StatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FEBD651B58E76700BF9D72 /* StatementViewController.xib */; };
 		D9FEBD691B59156A00BF9D72 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FEBD681B59156A00BF9D72 /* CoreText.framework */; };
@@ -2174,7 +2174,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "469f3d4a-caf7-43df-baeb-de028e47427e";
+				PROVISIONING_PROFILE = "2638f986-d33b-4bb6-a28a-bf59063c28af";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2212,7 +2212,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c125549d-7f8c-4f2f-b9af-76c0ded64bc8";
+				PROVISIONING_PROFILE = "2cbca195-5049-4d8d-b998-680fc692f5ef";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2223,8 +2223,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Rocky Uppal (3R7VB3H8QT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Rocky Uppal (3R7VB3H8QT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2236,7 +2236,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "469f3d4a-caf7-43df-baeb-de028e47427e";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos8.1;
 			};
 			name = Debug;
@@ -2246,8 +2246,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rocky Uppal (T5DY39F2BR)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rocky Uppal (T5DY39F2BR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2259,7 +2259,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c125549d-7f8c-4f2f-b9af-76c0ded64bc8";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos8.1;
 			};
 			name = Release;
