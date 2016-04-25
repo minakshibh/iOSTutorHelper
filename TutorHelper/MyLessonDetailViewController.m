@@ -146,8 +146,12 @@
         abc =[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_fee"]];
     }
     cell.backgroundColor=[UIColor clearColor];
-    [cell setLabelText:[dict valueForKey:@"student_name"] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]]:abc];
-
+    if ([self.trigger isEqualToString:@"Parent"]) {
+    
+    [cell setLabelTextForParent:[dict valueForKey:@"student_name"] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]]:abc];
+    }else{
+        [cell setLabelTextForTutor:[dict valueForKey:@"student_name"] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]]:abc];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     

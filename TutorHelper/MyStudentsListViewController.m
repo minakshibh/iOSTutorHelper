@@ -263,7 +263,11 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.trigger isEqualToString:@"Parent"]) {
     return 142;
+    }else{
+        return 100;
+    }
 }
 
 // Customize the appearance of table view cells.
@@ -283,21 +287,23 @@
     
     
     NSString*studentIdNameStr=[NSString stringWithFormat:@"%@(%@)",studentListObj.studentName,studentListObj.studentId];
-    
-    [cell setLabelText:studentIdNameStr :[NSString stringWithFormat:@"%@",studentListObj.studentEmail] :[NSString stringWithFormat:@"%@",studentListObj.studentContact]:[NSString stringWithFormat:@"%@",studentListObj.address]: [NSString stringWithFormat:@"%@",studentListObj.fees]];
-    
+    if ([self.trigger isEqualToString:@"Parent"]) {
+        [cell setLabelTextForParent: studentIdNameStr :[NSString stringWithFormat:@"%@",studentListObj.studentEmail] :[NSString stringWithFormat:@"%@",studentListObj.studentContact] :[NSString stringWithFormat:@"%@",studentListObj.address] :[NSString stringWithFormat:@"%@",studentListObj.fees]];
+    }else{
+        [cell setLabelTextForTutor:studentIdNameStr :[NSString stringWithFormat:@"%@",studentListObj.studentEmail] :[NSString stringWithFormat:@"%@",studentListObj.studentContact] :[NSString stringWithFormat:@"%@",studentListObj.address] :[NSString stringWithFormat:@"%@",studentListObj.fees]];
+    }
 
     /////// EDIT BUTTON //////////
     UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     if( IS_IPHONE_6P)
     {
-        editBtn.frame = CGRectMake(370.0f, 16.0f,20.0f,20.0f);
+        editBtn.frame = CGRectMake(360.0f, 5.0f,20.0f,20.0f);
     }else if( IS_IPHONE_6)
     {
-        editBtn.frame = CGRectMake(335.0f, 16.0f,20.0f,20.0f);
+        editBtn.frame = CGRectMake(325.0f, 5.0f,20.0f,20.0f);
     }
     else{
-        editBtn.frame = CGRectMake(270.0f, 16.0f,20.0f,20.0f);
+        editBtn.frame = CGRectMake(270.0f, 5.0f,20.0f,20.0f);
     }
     editBtn.tag = indexPath.row;
     [editBtn addTarget:self action:@selector(EditActionBtn:) forControlEvents:UIControlEventTouchUpInside];

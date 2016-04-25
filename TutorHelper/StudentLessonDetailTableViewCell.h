@@ -17,7 +17,10 @@
     IBOutlet UILabel *studBgLbl;
     IBOutlet UILabel *feesLbl;
     IBOutlet UILabel *addressLbl;
+    IBOutlet UILabel *fees;
 }
--(void)setLabelText:(NSString*)studentName :(NSString*)emailAddrss :(NSString*)contact :(NSString*)address: (NSString*)fees;
+-(void)setLabelTextForParent:(NSString*)studentName :(NSString*)emailAddrss :(NSString*)contact :(NSString*)address: (NSString*)fee;
+
+-(void)setLabelTextForTutor:(NSString*)studentName :(NSString*)emailAddrss :(NSString*)contact :(NSString*)address: (NSString*)fees;
 
 @end

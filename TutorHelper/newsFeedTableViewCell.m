@@ -66,5 +66,7 @@
         NSLog(@"Service time ..... %@",serviceDateTime);
     }
     dateLbl.text = [NSString stringWithFormat:@"%@",serviceDateTime];
+    [newsLbl scrollRangeToVisible:NSMakeRange(0, 1)];
 }
+
 @end

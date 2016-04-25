@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface tutorList : NSObject
-@property (strong, nonatomic) NSString*TutorId,*Name,*Email,*ContactNumber,*AlternateContact,*Address,*StudentId,*Fee,*studentCount,*notes;
+@property (strong, nonatomic) NSString*TutorId,*Name,*Email,*ContactNumber,*AlternateContact,*Address,*StudentId,*Fee,*studentCount,*notes,*feesOutstanding,*feesCollected,*outstandingBalance,*feesDue;
 @property (strong,nonatomic) NSMutableArray*tutorList,*feeDetailList,*StudentList;
 @end
 

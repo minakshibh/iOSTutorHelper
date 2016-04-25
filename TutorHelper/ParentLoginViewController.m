@@ -183,6 +183,7 @@
     if (![userDetailDict isKindOfClass:[NSNull class]])
     {
         NSString *messageStr=[userDetailDict valueForKey:@"message"];
+        [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"is_first"] forKey:@"First Login"];
         int result=[[userDetailDict valueForKey:@"result" ]intValue];
         if (result==1)
         {

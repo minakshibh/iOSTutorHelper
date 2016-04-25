@@ -29,4 +29,5 @@
     
 }
 - (IBAction)backBtn:(id)sender;
+@property(strong, nonatomic)  NSString*trigger;
 @end

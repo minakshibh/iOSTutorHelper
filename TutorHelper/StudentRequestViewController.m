@@ -188,14 +188,14 @@
     UIButton *rejectBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     if (IS_IPHONE_6P )
     {
-        rejectBtn.frame = CGRectMake(210.0f, 118.0f,130.0f,24.0f);
+        rejectBtn.frame = CGRectMake(210.0f, 115.0f,130.0f,24.0f);
     }
     else if (IS_IPHONE_6)
     {
-        rejectBtn.frame = CGRectMake(190.0f, 118.0f,130.0f,24.0f);
+        rejectBtn.frame = CGRectMake(190.0f, 115.0f,130.0f,24.0f);
     }
     else{
-        rejectBtn.frame = CGRectMake(160.0f, 118.0f,100.0f,24.0f);
+        rejectBtn.frame = CGRectMake(160.0f, 115.0f,100.0f,24.0f);
         
     }
     
@@ -213,16 +213,16 @@
     UIButton *connectBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     if (IS_IPHONE_6P )
     {
-        connectBtn.frame = CGRectMake(60.0f, 118.0f,130.0f,24.0f);
+        connectBtn.frame = CGRectMake(60.0f, 115.0f,130.0f,24.0f);
     }
 
    else if (IS_IPHONE_6)
     {
-        connectBtn.frame = CGRectMake(40.0f, 118.0f,130.0f,24.0f);
+        connectBtn.frame = CGRectMake(40.0f, 115.0f,130.0f,24.0f);
     }
 
     else{
-        connectBtn.frame = CGRectMake(40.0f, 118.0f,100.0f,24.0f);
+        connectBtn.frame = CGRectMake(40.0f, 115.0f,100.0f,24.0f);
         
     }
     connectBtn.tag = indexPath.row;

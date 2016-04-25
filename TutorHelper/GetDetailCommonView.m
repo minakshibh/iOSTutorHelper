@@ -169,7 +169,8 @@
                 NSString*fee_collected=[userDetailDict valueForKey:@"fee_collected"];
                 NSString*fee_due=[userDetailDict valueForKey:@"fee_due"];
                 NSArray*lessonList=[userDetailDict valueForKey:@"lesson_list"];
-                
+                [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of cancellation request"] forKey:@"No of Tutor cancellation request"];
+                [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of lesson request"] forKey:@"No of Tutor lesson request"];
                 if ([fee_collected isKindOfClass:[NSNull class]])
                 {
                    fee_collected=@"0";

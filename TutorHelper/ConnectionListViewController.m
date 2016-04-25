@@ -22,6 +22,7 @@
 
 @implementation ConnectionListViewController
 @synthesize trigger;
+
 - (void)viewDidLoad {
     
    requestTableView.tableFooterView = [[UIView alloc] init];
@@ -95,9 +96,6 @@
                 connectionRequestListArray =[[NSMutableArray alloc]init];
                 NSArray*requestArray=[userDetailDict valueForKey:@"request_list"];
                 connctListObj=[[ConnectRequset alloc]init];
-//                if (requestArray.count>0) {
-//                    requestArray=[requestArray objectAtIndex:0];
-//                }
                 
                 for(int k=0;k<[requestArray count];k++)
                 {
@@ -124,7 +122,10 @@
                 alert.tag=1;
                 [alert show];
             }
-            else {
+            else if (webservice==3){
+                UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Request has been Resend." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                alert.tag=2;
+                [alert show];
             }
         }
     }
@@ -137,6 +138,9 @@
         StudentRequestViewController*studentReqVc=[[StudentRequestViewController alloc]initWithNibName:@"StudentRequestViewController" bundle:[NSBundle mainBundle]];
         [self.navigationController pushViewController:studentReqVc animated:YES];
 
+    }else if (alertView.tag==2)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -196,21 +200,38 @@
     /////// Reject  BUTTON //////////
 
     UIButton *rejectBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [rejectBtn setTitle: @"edit" forState: UIControlStateNormal];
     
+    if ([trigger isEqualToString:@"Parent"])
+    {
+        [rejectBtn setTitle:@"REJECT" forState:UIControlStateNormal];
+        if (IS_IPHONE_6P)
+        {
+            rejectBtn.frame = CGRectMake(210.0f, 60.0f,130.0f,24.0f);
+        }
+        else if (IS_IPHONE_6)
+        {
+            rejectBtn.frame = CGRectMake(190.0f, 60.0f,130.0f,24.0f);
+        }
+        else{
+            rejectBtn.frame = CGRectMake(160.0f, 60.0f,100.0f,24.0f);
+            
+        }
+    }else {
+        [rejectBtn setTitle:@"RESEND" forState:UIControlStateNormal];
+        if (IS_IPHONE_6P)
+        {
+            rejectBtn.frame = CGRectMake(220.0f, 60.0f,130.0f,24.0f);
+        }
+        else if (IS_IPHONE_6)
+        {
+            rejectBtn.frame = CGRectMake(200.0f, 60.0f,130.0f,24.0f);
+        }
+        else{
+            rejectBtn.frame = CGRectMake(170.0f, 60.0f,100.0f,24.0f);
+            
+        }
+    }
     
-    if (IS_IPHONE_6P)
-    {
-        rejectBtn.frame = CGRectMake(210.0f, 60.0f,130.0f,24.0f);
-    }
-   else if (IS_IPHONE_6)
-    {
-        rejectBtn.frame = CGRectMake(190.0f, 60.0f,130.0f,24.0f);
-    }
-    else{
-        rejectBtn.frame = CGRectMake(160.0f, 60.0f,100.0f,24.0f);
-        
-    }
     rejectBtn.tag = indexPath.row;
     [rejectBtn setTintColor:[UIColor whiteColor]] ;
     [rejectBtn addTarget:self action:@selector(RejectActionBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -219,7 +240,7 @@
     UIImage *buttonBackgroundShowDetail= [UIImage imageNamed:@"reject.png"];
     [rejectBtn setBackgroundImage:buttonBackgroundShowDetail forState:UIControlStateNormal];
     rejectBtn.titleLabel.textColor=[UIColor whiteColor];
-    [rejectBtn setTitle:@"REJECT" forState:UIControlStateNormal];
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     
@@ -249,7 +270,10 @@
     connectBtn.titleLabel.textColor=[UIColor whiteColor];
 
     [connectBtn setBackgroundColor:[UIColor clearColor]];
+    if ([trigger isEqualToString:@"Parent"])
+    {
     [cell.contentView addSubview:connectBtn];
+    }
     [connectBtn setTitle:@"CONNECT" forState:UIControlStateNormal];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -305,6 +329,8 @@
 }
 - (IBAction)RejectActionBtn:(UIControl *)sender {
     
+    if ([trigger isEqualToString:@"Parent"])
+    {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
     NSLog(@"indexrow %ld", (long)indexPath.row);
     NSLog(@"Reject");
@@ -341,7 +367,44 @@
     {
         NSLog(@"connection is NULL");
     }
-    
+    }else{
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+        NSLog(@"indexrow %ld", (long)indexPath.row);
+        NSLog(@"Reject");
+        
+        ConnectRequset *connctObj = (ConnectRequset *)[connectionRequestListArray objectAtIndex:indexPath.row];
+        
+        NSString*_postData = [NSString stringWithFormat:@"pin=%@", connctObj.parent_id ];
+        webservice=3;
+        NSLog(@"data post >>> %@",_postData);
+        [kappDelegate ShowIndicator];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/resend-parent-details.php",Kwebservices]] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60.0];
+        [request setHTTPMethod:@"POST"];
+        [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        
+        [request setHTTPBody: [_postData dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if(connection)
+        {
+            if(webData==nil)
+            {
+                webData = [NSMutableData data] ;
+                NSLog(@"data");
+            }
+            else
+            {
+                webData=nil;
+                webData = [NSMutableData data] ;
+            }
+            NSLog(@"server connection made");
+        }
+        else
+        {
+            NSLog(@"connection is NULL");
+        }
+    }
 }
 
 -(void)FetchConnectionList

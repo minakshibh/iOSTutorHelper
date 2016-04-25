@@ -23,7 +23,8 @@
 #endif
 #define kappDelegate (AppDelegate *)[[UIApplication sharedApplication] delegate]
 
-#define Kwebservices @"http://app.tutor-helper.com"
+#define Kwebservices @"http://112.196.24.206/tutor_helper"
+//#define Kwebservices @"http://app.tutor-helper.com"
 #define KalertTittle @"Tutor Helper"
 
 

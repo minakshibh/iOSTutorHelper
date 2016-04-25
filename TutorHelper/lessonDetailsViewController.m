@@ -97,7 +97,8 @@
 
     
     cell.backgroundColor=[UIColor clearColor];
-    [cell setLabelText:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_name"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]]:[NSString stringWithFormat:@"%@",feesStr]];
+    
+    [cell setLabelTextForParent:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_name"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_email"]] :[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_contact_info"]]:[NSString stringWithFormat:@"%@",[dict valueForKey:@"student_address"]]:[NSString stringWithFormat:@"%@",feesStr]];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

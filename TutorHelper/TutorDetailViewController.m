@@ -242,4 +242,22 @@
     [self.navigationController pushViewController: tutorCalenderVc animated:YES];
 }
 
+- (IBAction)viewFeeDueActionBtn:(id)sender {
+    
+    feesDueBackGroudView.hidden = NO;
+    feesDuePopUp.layer.borderColor=[UIColor lightGrayColor].CGColor;
+    feesDuePopUp.layer.borderWidth=2.0f;
+    feesDuePopUp.layer.cornerRadius=5.0;
+    feesDuePopUp.clipsToBounds = YES;
+    feesDuePopUp.layer.masksToBounds = YES;
+    feesDueLbl.text = tutorListObj.feesDue;
+    feesCollectedLbl.text = tutorListObj.feesCollected;
+    feesOutstandingLbl.text = tutorListObj.feesOutstanding;
+    outstandingBalanceLbl.text = tutorListObj.outstandingBalance;
+}
+
+- (IBAction)DoneBtnAction:(id)sender {
+    feesDueBackGroudView.hidden = YES;
+}
+
 @end

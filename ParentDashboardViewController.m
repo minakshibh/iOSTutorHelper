@@ -36,6 +36,16 @@
 
 - (void)viewDidLoad {
     
+    int isFirstLogin = [[[NSUserDefaults standardUserDefaults] valueForKey:@"First Login"] intValue];
+    
+    if (isFirstLogin == 0) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"First Login"];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Do you want to change password ?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES",nil];
+        alert.tag = 1;
+        [alert show];
+        
+    }
+    
     [[NSUserDefaults standardUserDefaults ]valueForKey:@"pin"];
     [self GetBasicDetailsService];
     userIdLbl.text=[NSString stringWithFormat:@"parent Id : %@",[[NSUserDefaults standardUserDefaults ]valueForKey:@"pin"]];
@@ -55,7 +65,7 @@
     }
     if (IS_IPHONE_6P)
     {
-        calendarView = [[DDCalendarView alloc] initWithFrame:CGRectMake(10, 130, 354, 350) fontName:@"Helvetica" delegate:self trigger:@"Parent"];
+        calendarView = [[DDCalendarView alloc] initWithFrame:CGRectMake(10, 130, 395, 350) fontName:@"Helvetica" delegate:self trigger:@"Parent"];
     }
     if (IS_IPHONE_4_OR_LESS)
     {
@@ -68,6 +78,20 @@
 
 
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1 && buttonIndex == 1) {
+        
+        buttonsView.hidden=YES;
+        TutorRegistrationViewController*tutorRegVC=[[TutorRegistrationViewController alloc]initWithNibName:@"TutorRegistrationViewController" bundle:[NSBundle mainBundle]];
+        tutorRegVC.trigger=@"edit";
+        tutorRegVC.editView=@"Parent";
+        [self.navigationController pushViewController:tutorRegVC  animated:YES];
+
+    }
+    
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -139,6 +163,7 @@
     buttonsView.hidden=YES;
     
     MyStudentsListViewController*studentsVc=[[MyStudentsListViewController alloc]initWithNibName:@"MyStudentsListViewController" bundle:[NSBundle mainBundle]];
+    studentsVc.trigger = @"Tutor";
     [self.navigationController pushViewController:studentsVc animated:YES];
 }
 
@@ -355,6 +380,9 @@
     NSString*fee_collected=[userDetailDict valueForKey:@"fee_collected"];
     NSString*fee_due=[userDetailDict valueForKey:@"fee_due"];
     NSArray*lessonList=[userDetailDict valueForKey:@"lesson_list"];
+    [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of lesson request"] forKey:@"No of Parent lesson request"];
+    [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of student request"] forKey:@"No of Parent student request"];
+    [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of connection request"] forKey:@"No of Parent connection request"];
     
     if ([fee_collected isKindOfClass:[NSNull class]])
     {
@@ -405,7 +433,50 @@
         
     }
     [database close];
+    [self setCounts];
     
+}
+
+-(void)setCounts
+{
+    int lessonRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Parent lesson request"] intValue];
+    int studentRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Parent student request"] intValue];
+    int connectionRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Parent connection request"] intValue];
     
+    lessonRequestCount.layer.cornerRadius=10.0;
+    lessonRequestCount.clipsToBounds = YES;
+    lessonRequestCount.layer.masksToBounds = YES;
+
+    studentRequestCount.layer.cornerRadius=10.0;
+    studentRequestCount.clipsToBounds = YES;
+    studentRequestCount.layer.masksToBounds = YES;
+    
+    connectionRequestCount.layer.cornerRadius=10.0;
+    connectionRequestCount.clipsToBounds = YES;
+    connectionRequestCount.layer.masksToBounds = YES;
+    
+    if (lessonRequests == 0) {
+        lessonRequestCount.hidden = YES;
+    }else if (lessonRequests > 99){
+        lessonRequestCount.text = [NSString stringWithFormat:@"99+"];
+    }else{
+        lessonRequestCount.text = [NSString stringWithFormat:@"%d",lessonRequests];
+    }
+    
+    if (studentRequests == 0) {
+        studentRequestCount.hidden = YES;
+    }else if (studentRequests > 99){
+        studentRequestCount.text = [NSString stringWithFormat:@"99+"];
+    }else{
+        studentRequestCount.text = [NSString stringWithFormat:@"%d",studentRequests];
+    }
+    
+    if (connectionRequests == 0) {
+        connectionRequestCount.hidden = YES;
+    }else if (connectionRequests > 99){
+        connectionRequestCount.text = [NSString stringWithFormat:@"99+"];
+    }else{
+        connectionRequestCount.text = [NSString stringWithFormat:@"%d",connectionRequests];
+    }
 }
 @end

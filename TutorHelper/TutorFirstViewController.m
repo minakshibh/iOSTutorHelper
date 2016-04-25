@@ -51,7 +51,7 @@
 //    feesDueLbl.text=@"$222";
     [self getLessonDetailFromDataBase];
     [super viewDidLoad];
-    
+    [self setCounts];
     
 }
 
@@ -621,6 +621,34 @@
     [database close];
 }
 
-
+-(void)setCounts
+{
+    int lessonRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor lesson request"] intValue];
+    int cancellationRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor cancellation request"] intValue];
+    
+    lessonRequestCount.layer.cornerRadius=15.0;
+    lessonRequestCount.clipsToBounds = YES;
+    lessonRequestCount.layer.masksToBounds = YES;
+    
+    cancellationRequestCount.layer.cornerRadius=15.0;
+    cancellationRequestCount.clipsToBounds = YES;
+    cancellationRequestCount.layer.masksToBounds = YES;
+    
+    if (lessonRequests == 0) {
+        lessonRequestCount.hidden = YES;
+    }else if (lessonRequests > 99){
+        lessonRequestCount.text = [NSString stringWithFormat:@"99+"];
+    }else{
+        lessonRequestCount.text = [NSString stringWithFormat:@"%d",lessonRequests];
+    }
+    
+    if (cancellationRequests == 0) {
+        cancellationRequestCount.hidden = YES;
+    }else if (cancellationRequests > 99){
+        cancellationRequestCount.text = [NSString stringWithFormat:@"99+"];
+    }else{
+        cancellationRequestCount.text = [NSString stringWithFormat:@"%d",cancellationRequests];
+    }
+}
 
 @end

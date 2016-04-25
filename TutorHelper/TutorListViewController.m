@@ -138,7 +138,10 @@
                 tutorObj.AlternateContact=[NSString stringWithFormat:@"%@",[[tutorArray objectAtIndex:k ] valueForKey:@"alt_c_number"]];
                 tutorObj.feeDetailList=[[tutorArray objectAtIndex:k]valueForKey:@"fee_list"];
                 tutorObj.notes=[NSString stringWithFormat:@"%@",[[tutorArray objectAtIndex:k ] valueForKey:@"notes"]];
-                    
+                tutorObj.feesCollected=[NSString stringWithFormat:@"%@",[[tutorArray objectAtIndex:k ] valueForKey:@"fee_collected"]];
+                tutorObj.feesOutstanding=[NSString stringWithFormat:@"%@",[[tutorArray objectAtIndex:k] valueForKey:@"fee_outstanding"]];
+                tutorObj.outstandingBalance=[NSString stringWithFormat:@"%@",[[tutorArray objectAtIndex:k] valueForKey:@"outstanding_balance"]];
+                tutorObj.feesDue=[NSString stringWithFormat:@"%@",[[tutorArray objectAtIndex:k] valueForKey:@"feeDue"]];
                 [tutorListArray addObject:tutorObj];
             }
             [tutorListTableView reloadData];
@@ -190,6 +193,33 @@
     tutorNameLbl.numberOfLines=1;
     tutorNameLbl.font =  [UIFont boldSystemFontOfSize:13];
     [cell.contentView addSubview:tutorNameLbl ];
+    
+    /////// View Fee Due BUTTON //////////
+    UIButton *feeDueBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    if( IS_IPHONE_6P)
+    {
+        feeDueBtn.frame = CGRectMake(287.0f, 5.0f,120.0f,20.0f);
+    }else if( IS_IPHONE_6)
+    {
+        feeDueBtn.frame = CGRectMake(245.0f, 5.0f,120.0f,20.0f);
+    }
+    else{
+        feeDueBtn.frame = CGRectMake(200.0f, 5.0f,120.0f,20.0f);
+    }
+    feeDueBtn.tag = indexPath.row;
+    NSMutableAttributedString *titleString = [[NSMutableAttributedString alloc] initWithString:@"View Fee Due"];
+    
+    // making text property to underline text-
+    [titleString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [titleString length])];
+    
+    // using text on button
+    [feeDueBtn setAttributedTitle: titleString forState:UIControlStateNormal];
+    [feeDueBtn addTarget:self action:@selector(feeDueBtnActionBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [feeDueBtn setBackgroundColor:[UIColor clearColor]];
+    [feeDueBtn setTitleColor:[UIColor colorWithRed:71.0f green:185.0f blue:204.0f alpha:1.0f] forState:UIControlStateNormal];
+    feeDueBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    [cell.contentView addSubview:feeDueBtn];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     UILabel*tutorIdLbl= [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 280,30)];
     tutorIdLbl.backgroundColor = [UIColor clearColor];
@@ -246,12 +276,30 @@
     [self.navigationController pushViewController:tutorDetailVc  animated:YES];
 }
 
-
-
-
+-(void)feeDueBtnActionBtn:(UIControl *)sender{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    NSLog(@"indexrow %ld", (long)indexPath.row);
+    tutorList*tutorListObj = [tutorListArray objectAtIndex:indexPath.row];
+    tutorListTableView.userInteractionEnabled = NO;
+    feesDueBackGroudView.hidden = NO;
+    feesDuePopUp.layer.borderColor=[UIColor lightGrayColor].CGColor;
+    feesDuePopUp.layer.borderWidth=2.0f;
+    feesDuePopUp.layer.cornerRadius=5.0;
+    feesDuePopUp.clipsToBounds = YES;
+    feesDuePopUp.layer.masksToBounds = YES;
+    feesDueLbl.text = tutorListObj.feesDue;
+    feesCollectedLbl.text = tutorListObj.feesCollected;
+    feesOutstandingLbl.text = tutorListObj.feesOutstanding;
+    outstandingBalanceLbl.text = tutorListObj.outstandingBalance;
+}
 
 - (IBAction)backBttn:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
  }
+
+- (IBAction)DoneBtnAction:(id)sender {
+    tutorListTableView.userInteractionEnabled = YES;
+    feesDueBackGroudView.hidden = YES;
+}
 @end

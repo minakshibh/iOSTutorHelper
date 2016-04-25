@@ -38,6 +38,8 @@
     int webservice;
     IBOutlet UIView *lessondetailBcakView;
     NSMutableData *webdata;
+    IBOutlet UILabel *cancellationRequestCount;
+    IBOutlet UILabel *lessonRequestCount;
 }
 - (IBAction)button:(id)sender;
 - (IBAction)myConnectionsBttn:(id)sender;

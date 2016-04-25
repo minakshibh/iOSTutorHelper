@@ -465,6 +465,7 @@
     MyLessonDetailViewController*lessonRequstVC=[[MyLessonDetailViewController alloc]initWithNibName:@"MyLessonDetailViewController" bundle:[NSBundle mainBundle]];
     lessonRequstVC.lessonObj=lessonObj1;
     lessonRequstVC.lessonDetailView=dateDetail;
+    lessonRequstVC.trigger = trigger;
     [self.navigationController pushViewController:lessonRequstVC animated:YES];
 }
 

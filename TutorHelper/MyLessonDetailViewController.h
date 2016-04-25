@@ -38,5 +38,5 @@
 - (IBAction)updateNotesBtn:(id)sender;
 @property(strong,nonatomic)Lessons*lessonObj;
 @property(strong,nonatomic)NSString*lessonDetailView;
-
+@property(strong,nonatomic)NSString*trigger;
 @end

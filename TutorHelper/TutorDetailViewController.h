@@ -31,12 +31,19 @@
     IBOutlet UILabel *emailAddressLbl;
     IBOutlet UILabel *studentsLbl;
     IBOutlet UITextView *addressLbl;
-    
+    IBOutlet UIView *feesDueBackGroudView;
+    IBOutlet UIView *feesDuePopUp;
     IBOutlet UITableView *studentsTableView;
+    IBOutlet UILabel *feesDueLbl;
+    IBOutlet UILabel *feesCollectedLbl;
+    IBOutlet UILabel *feesOutstandingLbl;
+    IBOutlet UILabel *outstandingBalanceLbl;
 }
 @property (strong ,nonatomic) tutorList*tutorListObj;
 - (IBAction)addLessonBttn:(id)sender;
 - (IBAction)viewTutorCalenderBtnAction:(id)sender;
+- (IBAction)viewFeeDueActionBtn:(id)sender;
+- (IBAction)DoneBtnAction:(id)sender;
 
 - (IBAction)backBttn:(id)sender;
 - (IBAction)callBtn:(id)sender;
