@@ -36,6 +36,24 @@
 
 - (void)viewDidLoad {
     
+    if (IS_IPHONE_5)
+    {
+        radius = 11.0;
+    }
+    
+    if (IS_IPHONE_6)
+    {
+        radius = 14.0;
+    }
+    if (IS_IPHONE_6P)
+    {
+        radius = 15.0;
+    }
+    if (IS_IPHONE_4_OR_LESS)
+    {
+        radius = 8.0;
+    }
+    
     int isFirstLogin = [[[NSUserDefaults standardUserDefaults] valueForKey:@"First Login"] intValue];
     
     if (isFirstLogin == 0) {
@@ -443,15 +461,15 @@
     int studentRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Parent student request"] intValue];
     int connectionRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Parent connection request"] intValue];
     
-    lessonRequestCount.layer.cornerRadius=10.0;
+    lessonRequestCount.layer.cornerRadius=radius;
     lessonRequestCount.clipsToBounds = YES;
     lessonRequestCount.layer.masksToBounds = YES;
 
-    studentRequestCount.layer.cornerRadius=10.0;
+    studentRequestCount.layer.cornerRadius=radius;
     studentRequestCount.clipsToBounds = YES;
     studentRequestCount.layer.masksToBounds = YES;
     
-    connectionRequestCount.layer.cornerRadius=10.0;
+    connectionRequestCount.layer.cornerRadius=radius;
     connectionRequestCount.clipsToBounds = YES;
     connectionRequestCount.layer.masksToBounds = YES;
     

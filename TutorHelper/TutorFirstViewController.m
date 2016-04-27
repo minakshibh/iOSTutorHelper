@@ -29,6 +29,25 @@
 @implementation TutorFirstViewController
 
 - (void)viewDidLoad {
+    
+    if (IS_IPHONE_5)
+    {
+        radius = 11.0;
+    }
+    
+    if (IS_IPHONE_6)
+    {
+        radius = 14.0;
+    }
+    if (IS_IPHONE_6P)
+    {
+        radius = 15.0;
+    }
+    if (IS_IPHONE_4_OR_LESS)
+    {
+        radius = 11.0;
+    }
+    
     lessonDetailArray=[[NSMutableArray alloc]init];
     Lessons *lessonObj=[[Lessons alloc]init];
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -625,14 +644,19 @@
 {
     int lessonRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor lesson request"] intValue];
     int cancellationRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor cancellation request"] intValue];
+    int connectionRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor connection request"] intValue];
     
-    lessonRequestCount.layer.cornerRadius=15.0;
+    lessonRequestCount.layer.cornerRadius=radius;
     lessonRequestCount.clipsToBounds = YES;
     lessonRequestCount.layer.masksToBounds = YES;
     
-    cancellationRequestCount.layer.cornerRadius=15.0;
+    cancellationRequestCount.layer.cornerRadius=radius;
     cancellationRequestCount.clipsToBounds = YES;
     cancellationRequestCount.layer.masksToBounds = YES;
+    
+    connectionRequestCount.layer.cornerRadius=radius;
+    connectionRequestCount.clipsToBounds = YES;
+    connectionRequestCount.layer.masksToBounds = YES;
     
     if (lessonRequests == 0) {
         lessonRequestCount.hidden = YES;
@@ -649,6 +673,15 @@
     }else{
         cancellationRequestCount.text = [NSString stringWithFormat:@"%d",cancellationRequests];
     }
+    
+    if (connectionRequests == 0) {
+        connectionRequestCount.hidden = YES;
+    }else if (connectionRequests > 99){
+        connectionRequestCount.text = [NSString stringWithFormat:@"99+"];
+    }else{
+        connectionRequestCount.text = [NSString stringWithFormat:@"%d",connectionRequests];
+    }
+    
 }
 
 @end

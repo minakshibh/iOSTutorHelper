@@ -15,6 +15,7 @@
 
 @interface TutorFirstViewController : UIViewController<DDCalendarViewDelegate>
 {
+    float radius;
     GetDetailCommonView*getDetailView;
     NSMutableData*webData;
     Lessons*LessonListObj;
@@ -27,6 +28,7 @@
     NSMutableArray*lessonDetailArray;
     
     
+    IBOutlet UILabel *connectionRequestCount;
     IBOutlet UILabel *tutorIdLbl;
     IBOutlet UILabel *tutorNameLbl;
     NSArray *docPaths;

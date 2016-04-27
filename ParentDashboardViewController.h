@@ -12,6 +12,7 @@
 
 @interface ParentDashboardViewController : UIViewController<DDCalendarViewDelegate>
 {
+    float radius;
     DDCalendarView *calendarView;
     IBOutlet UIView *buttonsView;
     IBOutlet UILabel *userIdLbl;
