@@ -21,9 +21,11 @@
     NSArray *docPaths;
     NSString *documentsDir, *dbPath;
     FMDatabase *database;
+    int webservice;
     IBOutlet UILabel *connectionRequestCount;
     IBOutlet UILabel *studentRequestCount;
     IBOutlet UILabel *lessonRequestCount;
+
 }
 - (IBAction)btnInvoice:(id)sender;
 

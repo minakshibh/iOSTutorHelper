@@ -17,7 +17,7 @@
     
     IBOutlet UITextView *reasonTxtView;
     IBOutlet UILabel *histryUpprLbl;
-     Lessons *lessObj;
+    Lessons *lessObj;
     IBOutlet UIView *reasonBackView;
     IBOutlet UITableView *lessonsTableView;
     IBOutlet UILabel *headrLbl;
@@ -28,6 +28,6 @@
 - (IBAction)cancelBttn:(id)sender;
 - (IBAction)doneBttn:(id)sender;
 
-@property (strong ,nonatomic) NSString*trigger,*dateDetail,*studentIdStr;
+@property (strong ,nonatomic) NSString*trigger,*seeRejectedLessons,*dateDetail,*studentIdStr;
 
 @end

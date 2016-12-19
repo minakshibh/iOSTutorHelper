@@ -29,25 +29,6 @@
 @implementation TutorFirstViewController
 
 - (void)viewDidLoad {
-    
-    if (IS_IPHONE_5)
-    {
-        radius = 11.0;
-    }
-    
-    if (IS_IPHONE_6)
-    {
-        radius = 14.0;
-    }
-    if (IS_IPHONE_6P)
-    {
-        radius = 15.0;
-    }
-    if (IS_IPHONE_4_OR_LESS)
-    {
-        radius = 11.0;
-    }
-    
     lessonDetailArray=[[NSMutableArray alloc]init];
     Lessons *lessonObj=[[Lessons alloc]init];
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -70,7 +51,7 @@
 //    feesDueLbl.text=@"$222";
     [self getLessonDetailFromDataBase];
     [super viewDidLoad];
-    [self setCounts];
+    
     
 }
 
@@ -181,39 +162,8 @@
 
 
 - (IBAction)logOutBttn:(id)sender {
-    NSString*deviceToken=[[NSUserDefaults standardUserDefaults]valueForKey:@"deviceToken"];
-    NSString*UDID=[[NSUserDefaults standardUserDefaults]valueForKey:@"UDID"];
-
-    docPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    documentsDir = [docPaths objectAtIndex:0];
-    dbPath = [documentsDir   stringByAppendingPathComponent:@"TutorHelper.sqlite"];
-    database = [FMDatabase databaseWithPath:dbPath];
-    [database open];
+    [self logoutWebservice];
     
-    NSString *deleteQuery = [NSString stringWithFormat:@"DELETE  from ParentList"];
-    [database executeUpdate:deleteQuery];
-    
-    NSString *deleteQuery1 = [NSString stringWithFormat:@"DELETE from StudentList "];
-    [database executeUpdate:deleteQuery1];
-
-    
-    [database close];
-
-    
-    buttonsView.hidden=YES;
-    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
-    NSDictionary * dict = [defs dictionaryRepresentation];
-    for (id key in dict) {
-        [defs removeObjectForKey:key];
-    }
-    [defs synchronize];
-    [[NSUserDefaults standardUserDefaults ]removeObjectForKey:@"tutor_id"];
-    
-    [[NSUserDefaults standardUserDefaults]setValue:deviceToken forKey:@"deviceToken"];
-    [[NSUserDefaults standardUserDefaults]setValue:UDID forKey:@"UDID"];
-    
-    SplashViewController*splashVc=[[SplashViewController alloc]initWithNibName:@"SplashViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:splashVc animated:YES];
 }
 
 
@@ -229,6 +179,14 @@
     buttonsView.hidden=YES;
     MyLessonsViewController*lessonRequstVC=[[MyLessonsViewController alloc]initWithNibName:@"MyLessonsViewController" bundle:[NSBundle mainBundle]];
     lessonRequstVC.trigger=@"Tutor";
+    [self.navigationController pushViewController:lessonRequstVC animated:YES];
+}
+
+- (IBAction)myRejectedLessonsBttn:(id)sender {
+    buttonsView.hidden=YES;
+    MyLessonsViewController*lessonRequstVC=[[MyLessonsViewController alloc]initWithNibName:@"MyLessonsViewController" bundle:[NSBundle mainBundle]];
+    lessonRequstVC.trigger=@"Tutor";
+    lessonRequstVC.seeRejectedLessons = @"YES";
     [self.navigationController pushViewController:lessonRequstVC animated:YES];
 }
 
@@ -366,6 +324,38 @@
     [self getLessonDetailFromDataBase];
 }
 
+-(void)logoutWebservice{
+        webservice=11;
+        NSString*_postData = [NSString stringWithFormat:@"user_id=%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"tutor_id"]];
+        NSLog(@"data post >>> %@",_postData);
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/logout.php",Kwebservices]] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60.0];
+        [request setHTTPMethod:@"POST"];
+        [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        
+        [request setHTTPBody: [_postData dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        [kappDelegate ShowIndicator];
+        
+        if(connection)
+        {
+            if(webData==nil)
+            {
+                webData = [NSMutableData data] ;
+                NSLog(@"data");
+            }
+            else
+            {
+                webData=nil;
+                webData = [NSMutableData data] ;
+            }
+            NSLog(@"server connection made");
+        }
+        else
+        {
+            NSLog(@"connection is NULL");
+        }
+}
 
 - (void)getLeassonDetails:(NSString*)lessonDate {
     
@@ -411,7 +401,7 @@
 {
     [kappDelegate HideIndicator];
     
-    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Intenet connection failed.. Try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Intenet c onnection failed.. Try again later." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alert show];
     NSLog(@"ERROR with the Connection ");
     webData =nil;
@@ -545,6 +535,47 @@
         
         return;
 
+    }else if(webservice==11){
+        webservice=0;
+        NSString *messaageStr = [userDetailDict valueForKey:@"message"];
+        if ([messaageStr isEqualToString:@"success"]){
+            NSString*deviceToken=[[NSUserDefaults standardUserDefaults]valueForKey:@"deviceToken"];
+            NSString*UDID=[[NSUserDefaults standardUserDefaults]valueForKey:@"UDID"];
+            
+            docPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            documentsDir = [docPaths objectAtIndex:0];
+            dbPath = [documentsDir   stringByAppendingPathComponent:@"TutorHelper.sqlite"];
+            database = [FMDatabase databaseWithPath:dbPath];
+            [database open];
+            
+            NSString *deleteQuery = [NSString stringWithFormat:@"DELETE  from ParentList"];
+            [database executeUpdate:deleteQuery];
+            
+            NSString *deleteQuery1 = [NSString stringWithFormat:@"DELETE from StudentList "];
+            [database executeUpdate:deleteQuery1];
+            
+            
+            [database close];
+            
+            
+            buttonsView.hidden=YES;
+            NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+            NSDictionary * dict = [defs dictionaryRepresentation];
+            for (id key in dict) {
+                [defs removeObjectForKey:key];
+            }
+            [defs synchronize];
+            [[NSUserDefaults standardUserDefaults ]removeObjectForKey:@"tutor_id"];
+            
+            [[NSUserDefaults standardUserDefaults]setValue:deviceToken forKey:@"deviceToken"];
+            [[NSUserDefaults standardUserDefaults]setValue:UDID forKey:@"UDID"];
+            
+            SplashViewController*splashVc=[[SplashViewController alloc]initWithNibName:@"SplashViewController" bundle:[NSBundle mainBundle]];
+            [self.navigationController pushViewController:splashVc animated:YES];
+        }else{
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:messaageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
     }
 }
 -(void) GetBasicDetailsService {
@@ -640,48 +671,6 @@
     [database close];
 }
 
--(void)setCounts
-{
-    int lessonRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor lesson request"] intValue];
-    int cancellationRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor cancellation request"] intValue];
-    int connectionRequests = [[[NSUserDefaults standardUserDefaults] valueForKey:@"No of Tutor connection request"] intValue];
-    
-    lessonRequestCount.layer.cornerRadius=radius;
-    lessonRequestCount.clipsToBounds = YES;
-    lessonRequestCount.layer.masksToBounds = YES;
-    
-    cancellationRequestCount.layer.cornerRadius=radius;
-    cancellationRequestCount.clipsToBounds = YES;
-    cancellationRequestCount.layer.masksToBounds = YES;
-    
-    connectionRequestCount.layer.cornerRadius=radius;
-    connectionRequestCount.clipsToBounds = YES;
-    connectionRequestCount.layer.masksToBounds = YES;
-    
-    if (lessonRequests == 0) {
-        lessonRequestCount.hidden = YES;
-    }else if (lessonRequests > 99){
-        lessonRequestCount.text = [NSString stringWithFormat:@"99+"];
-    }else{
-        lessonRequestCount.text = [NSString stringWithFormat:@"%d",lessonRequests];
-    }
-    
-    if (cancellationRequests == 0) {
-        cancellationRequestCount.hidden = YES;
-    }else if (cancellationRequests > 99){
-        cancellationRequestCount.text = [NSString stringWithFormat:@"99+"];
-    }else{
-        cancellationRequestCount.text = [NSString stringWithFormat:@"%d",cancellationRequests];
-    }
-    
-    if (connectionRequests == 0) {
-        connectionRequestCount.hidden = YES;
-    }else if (connectionRequests > 99){
-        connectionRequestCount.text = [NSString stringWithFormat:@"99+"];
-    }else{
-        connectionRequestCount.text = [NSString stringWithFormat:@"%d",connectionRequests];
-    }
-    
-}
+
 
 @end

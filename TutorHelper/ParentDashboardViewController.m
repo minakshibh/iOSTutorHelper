@@ -107,7 +107,7 @@
         tutorRegVC.trigger=@"edit";
         tutorRegVC.editView=@"Parent";
         [self.navigationController pushViewController:tutorRegVC  animated:YES];
-
+        
     }
     
 }
@@ -236,27 +236,7 @@
 }
 
 - (IBAction)logOutBttn:(id)sender {
-    
-    NSString*deviceToken=[[NSUserDefaults standardUserDefaults]valueForKey:@"deviceToken"];
-    NSString*UDID=[[NSUserDefaults standardUserDefaults]valueForKey:@"UDID"];
-    
-    
-     buttonsView.hidden=YES;
-    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
-    NSDictionary * dict = [defs dictionaryRepresentation];
-    for (id key in dict) {
-        [defs removeObjectForKey:key];
-    }
-    [defs synchronize];
-    
-    [[NSUserDefaults standardUserDefaults ]removeObjectForKey:@"pin"];
-    
-    [[NSUserDefaults standardUserDefaults]setValue:deviceToken forKey:@"deviceToken"];
-    [[NSUserDefaults standardUserDefaults]setValue:UDID forKey:@"UDID"];
-
-    
-    SplashViewController*splashVc=[[SplashViewController alloc]initWithNibName:@"SplashViewController" bundle:[NSBundle mainBundle]];
-    [self.navigationController pushViewController:splashVc   animated:YES];
+    [self logoutWebservice];
 }
 
 - (IBAction)studentRequestBttn:(id)sender
@@ -292,6 +272,15 @@
 
     MyLessonsViewController*lessonRequstVC=[[MyLessonsViewController alloc]initWithNibName:@"MyLessonsViewController" bundle:[NSBundle mainBundle]];
     lessonRequstVC.trigger=@"Parent";
+    [self.navigationController pushViewController:lessonRequstVC animated:YES];
+}
+
+- (IBAction)myRejectedLessons:(id)sender {
+    buttonsView.hidden=YES;
+    
+    MyLessonsViewController*lessonRequstVC=[[MyLessonsViewController alloc]initWithNibName:@"MyLessonsViewController" bundle:[NSBundle mainBundle]];
+    lessonRequstVC.trigger=@"Parent";
+    lessonRequstVC.seeRejectedLessons = @"YES";
     [self.navigationController pushViewController:lessonRequstVC animated:YES];
 }
 
@@ -355,6 +344,45 @@
         
     }
 }
+
+-(void)logoutWebservice{
+    NSString*_postData ;
+    
+    NSString *parentId=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults ]valueForKey:@"pin"]];
+    
+        _postData = [NSString stringWithFormat:@"user_id=%@",parentId];
+        webservice = 1;
+    
+        NSLog(@"data post >>> %@",_postData);
+        [kappDelegate ShowIndicator];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/logout.php",Kwebservices]] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60.0];
+        [request setHTTPMethod:@"POST"];
+        [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        
+        [request setHTTPBody: [_postData dataUsingEncoding:NSUTF8StringEncoding]];
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        
+        if(connection)
+        {
+            if(webdata==nil)
+            {
+                webdata = [NSMutableData data] ;
+                NSLog(@"data");
+            }
+            else
+            {
+                webdata=nil;
+                webdata = [NSMutableData data] ;
+            }
+            NSLog(@"server connection made");
+        }
+        else
+        {
+            NSLog(@"connection is NULL");
+        }
+}
+
 #pragma mark - Delegate
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -394,14 +422,48 @@
     NSMutableDictionary *userDetailDict=[json objectWithString:responseString error:&error];
     
     NSLog(@"%@",userDetailDict);
+    if(webservice == 1){
+        webservice = 0;
+        NSString *messaageStr = [userDetailDict valueForKey:@"message"];
+        if ([messaageStr isEqualToString:@"success"]){
+            NSString*deviceToken=[[NSUserDefaults standardUserDefaults]valueForKey:@"deviceToken"];
+            NSString*UDID=[[NSUserDefaults standardUserDefaults]valueForKey:@"UDID"];
+            
+            
+            buttonsView.hidden=YES;
+            NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+            NSDictionary * dict = [defs dictionaryRepresentation];
+            for (id key in dict) {
+                [defs removeObjectForKey:key];
+            }
+            [defs synchronize];
+            
+            [[NSUserDefaults standardUserDefaults ]removeObjectForKey:@"pin"];
+            
+            [[NSUserDefaults standardUserDefaults]setValue:deviceToken forKey:@"deviceToken"];
+            [[NSUserDefaults standardUserDefaults]setValue:UDID forKey:@"UDID"];
+            
+            
+            SplashViewController*splashVc=[[SplashViewController alloc]initWithNibName:@"SplashViewController" bundle:[NSBundle mainBundle]];
+            [self.navigationController pushViewController:splashVc   animated:YES];
+
+        }else{
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:messaageStr delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+        }
+        return;
+    }
+    
+    
     NSString*activalessons=[userDetailDict valueForKey:@"no of active students"];
     NSString*fee_collected=[userDetailDict valueForKey:@"fee_collected"];
     NSString*fee_due=[userDetailDict valueForKey:@"fee_due"];
     NSArray*lessonList=[userDetailDict valueForKey:@"lesson_list"];
+    
     [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of lesson request"] forKey:@"No of Parent lesson request"];
     [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of student request"] forKey:@"No of Parent student request"];
     [[NSUserDefaults standardUserDefaults] setValue:[userDetailDict valueForKey:@"no of connection request"] forKey:@"No of Parent connection request"];
-    
+
     if ([fee_collected isKindOfClass:[NSNull class]])
     {
         fee_collected=@"0";
@@ -447,12 +509,9 @@
         NSDictionary*tempDict=[lessonList objectAtIndex:i];
         NSString *insert = [NSString stringWithFormat:@"INSERT INTO LessonList (userId, NumberOfLessons, fulldayBlockOut, halfdayBlockOut, lessonDate) VALUES(\"%@\", \"%@\",\"%@\",\"%@\", \"%@\")",parentId,[tempDict valueForKey:@"no._of_lessons"],[tempDict valueForKey:@"block_out_time_for_fullday"],[tempDict valueForKey:@"block_out_time_for_halfday"],[tempDict valueForKey:@"lesson_date"]];
         [database executeUpdate:insert];
-        
-        
     }
     [database close];
     [self setCounts];
-    
 }
 
 -(void)setCounts
@@ -464,7 +523,7 @@
     lessonRequestCount.layer.cornerRadius=radius;
     lessonRequestCount.clipsToBounds = YES;
     lessonRequestCount.layer.masksToBounds = YES;
-
+    
     studentRequestCount.layer.cornerRadius=radius;
     studentRequestCount.clipsToBounds = YES;
     studentRequestCount.layer.masksToBounds = YES;
@@ -472,7 +531,6 @@
     connectionRequestCount.layer.cornerRadius=radius;
     connectionRequestCount.clipsToBounds = YES;
     connectionRequestCount.layer.masksToBounds = YES;
-    
     if (lessonRequests == 0) {
         lessonRequestCount.hidden = YES;
     }else if (lessonRequests > 99){
@@ -497,4 +555,5 @@
         connectionRequestCount.text = [NSString stringWithFormat:@"%d",connectionRequests];
     }
 }
+
 @end

@@ -19,7 +19,7 @@
 @end
 
 @implementation MyLessonsViewController
-@synthesize trigger,lessonObj,dateDetail,lessonsListArray,studentIdStr;
+@synthesize trigger,seeRejectedLessons,lessonObj,dateDetail,lessonsListArray,studentIdStr;
 
 - (void)viewDidLoad {
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
@@ -38,6 +38,11 @@
         lessonsTableView.frame=CGRectMake(lessonsTableView.frame.origin.x, lessonsTableView.frame.origin.y+20, lessonsTableView.frame.size.width, lessonsTableView.frame.size.height);
         
         [self fetchHistoryWebservice];
+    }
+    else if ([seeRejectedLessons isEqualToString: @"YES"]){
+        headrLbl.text = @"My Rejected Lessons";
+        histryUpprLbl.hidden=YES;
+        [self FetchMyRejectedLessonList];
     }
     else
     {
@@ -87,6 +92,55 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)FetchMyRejectedLessonList
+{
+    NSString*tutor_id;
+    NSString*parentId;
+    
+    if ([trigger isEqualToString:@"Tutor"])
+    {
+        tutor_id=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults ]valueForKey:@"tutor_id"]];
+        parentId=@"";
+        _postData = [NSString stringWithFormat:@"trigger=%@&parent_id=%@&tutor_id=%@", @"Tutor",@"",tutor_id];
+    }
+    else
+    {
+        parentId=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults ]valueForKey:@"pin"]];
+        tutor_id=@"";
+        _postData = [NSString stringWithFormat:@"trigger=%@&parent_id=%@&tutor_id=%@", @"Parent",parentId,@""];
+    }
+    
+    webservice=1;
+    NSLog(@"data post >>> %@",_postData);
+    [kappDelegate ShowIndicator];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/fetch-rejected-lessons.php",Kwebservices]] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:60.0];
+    [request setHTTPMethod:@"POST"];
+    [request addValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    [request setHTTPBody: [_postData dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    if(connection)
+    {
+        if(webData==nil)
+        {
+            webData = [NSMutableData data] ;
+            NSLog(@"data");
+        }
+        else
+        {
+            webData=nil;
+            webData = [NSMutableData data] ;
+        }
+        NSLog(@"server connection made");
+    }
+    else
+    {
+        NSLog(@"connection is NULL");
+    }
 }
 
 -(void)FetchMyLessonList
@@ -182,6 +236,7 @@
     SBJsonParser *json = [[SBJsonParser alloc] init];
     NSMutableDictionary *userDetailDict=[json objectWithString:responseString error:&error];
     NSLog(@"userDetailDict:%@",userDetailDict);
+    
     if (![userDetailDict isKindOfClass:[NSNull class]])
     {
         NSString *messageStr=[userDetailDict valueForKey:@"message"];
@@ -199,7 +254,6 @@
                 
                 lessonsListArray =[[NSMutableArray alloc]init];
                 //  NSArray*requestArray1=[userDetailDict valueForKey:@"lesson_data"];
-                
                 
                 NSArray*requestArray=[userDetailDict valueForKey:@"lesson_data"];
                 if (requestArray.count>0)
@@ -231,7 +285,7 @@
                         LessonListObj.tutorName=[NSString stringWithFormat:@"%@",[[requestArray  objectAtIndex:k ] valueForKey:@"tutor_name"]];
                         LessonListObj.lesson_end_Date=[NSString stringWithFormat:@"%@",[[requestArray  objectAtIndex:k ] valueForKey:@"end_date"]];
                         LessonListObj.lesson_is_active = [NSString stringWithFormat:@"%@",[[requestArray objectAtIndex:k] valueForKey:@"lesson_is_active"]];
-                     
+                        LessonListObj.rejected_by = [NSString stringWithFormat:@"%@",[[requestArray objectAtIndex:k] valueForKey:@"rejected_by"]];
                         [lessonsListArray addObject:LessonListObj];
                     }
                     
@@ -242,7 +296,7 @@
             }
             else if (webservice==3){
                 
-                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Your request to cancel lesson has been submit successfully." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                UIAlertView*alert=[[UIAlertView alloc]initWithTitle:KalertTittle message:@"Your request to cancel lesson has been submit suceesfully." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alert show];
                 reasonBackView.hidden=YES;
                 reasonTxtView.text=@"";
@@ -304,10 +358,14 @@
     int height;
     if ([dateDetail isEqualToString:@"History"])
     {
-        height=125;
+        height=138;
     }
     else{
-        height=125;
+         if ([seeRejectedLessons isEqualToString: @"YES"]){
+             height=130;
+         }else{
+             height=140;
+         }
     }
 
 
@@ -331,6 +389,10 @@
     
     cell.backgroundColor=[UIColor clearColor];
     
+    // hide isapproved label while seeing rejected lesson list
+    if ([seeRejectedLessons isEqualToString: @"YES"]){
+        lessonObj.lesson_is_active = @"true";
+    }
     
     NSString*startTimeStr=lessonObj.lesson_start_time;
     NSString*endTimeStr=lessonObj.lesson_end_time;
@@ -402,7 +464,10 @@
             cancelLessonBtn.titleLabel.textColor=[UIColor whiteColor];
                 
             [cancelLessonBtn setBackgroundColor:[UIColor clearColor]];
-            [cell.contentView addSubview:cancelLessonBtn];
+            // hide cancel button while seeing rejected lesson list
+            if (![seeRejectedLessons isEqualToString: @"YES"]){
+                [cell.contentView addSubview:cancelLessonBtn];
+            }
             [cancelLessonBtn setTitle:@"CANCEL" forState:UIControlStateNormal];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
   
@@ -447,10 +512,11 @@
         
     if ([dateDetail isEqualToString:@"History"])
     {
-        [cell setLabelText:self.lessonObj.lessonDescription :lessonTime :self.lessonObj.lesson_days :lessonDate :self.lessonObj.lesson_duration :@"History" :lessonObj.lesson_is_active];
+        [cell setLabelText:self.lessonObj.lessonDescription :lessonTime :self.lessonObj.lesson_days :lessonDate :self.lessonObj.lesson_duration :@"History" :lessonObj.lesson_is_active : lessonObj.rejected_by];
+        
     }
     else{
-        [cell setLabelText:self.lessonObj.lessonDescription :lessonTime :self.lessonObj.lesson_days :self.lessonObj.no_of_students :self.lessonObj.lesson_duration :@"":lessonObj.lesson_is_active];
+        [cell setLabelText:self.lessonObj.lessonDescription :lessonTime :self.lessonObj.lesson_days :self.lessonObj.no_of_students :self.lessonObj.lesson_duration :@"":lessonObj.lesson_is_active :lessonObj.rejected_by];
     }
     
     return  cell;
@@ -465,7 +531,6 @@
     MyLessonDetailViewController*lessonRequstVC=[[MyLessonDetailViewController alloc]initWithNibName:@"MyLessonDetailViewController" bundle:[NSBundle mainBundle]];
     lessonRequstVC.lessonObj=lessonObj1;
     lessonRequstVC.lessonDetailView=dateDetail;
-    lessonRequstVC.trigger = trigger;
     [self.navigationController pushViewController:lessonRequstVC animated:YES];
 }
 

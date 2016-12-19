@@ -19,7 +19,7 @@
 
     // Configure the view for the selected state
 }
--(void)setLabelText:(NSString*)detailStr :(NSString*)timeStr :(NSString*)DaysStr :(NSString*)students :(NSString*)duration :(NSString*)trigger:(NSString*)isApproved 
+-(void)setLabelText:(NSString*)detailStr :(NSString*)timeStr :(NSString*)DaysStr :(NSString*)students :(NSString*)duration :(NSString*)trigger:(NSString*)isApproved :(NSString*)rejected_bytext
 {
     
     descripTionLbl.text=detailStr;
@@ -31,7 +31,17 @@
     backImgView.layer.cornerRadius=5.0;
     backImgView.clipsToBounds = YES;
     backImgView.layer.masksToBounds = YES;
+    [contentView bringSubviewToFront:backgroundView];
     
+    
+    
+    if ([rejected_bytext rangeOfString:@"Rejected"].location != NSNotFound){
+        rejected_by.hidden = false;
+        rejected_by.text = rejected_bytext;
+        backgroundView.frame = CGRectMake(backgroundView.frame.origin.x, backgroundView.frame.origin.y, backgroundView.frame.size.width, backgroundView.frame.size.height);
+//        [self.backgroundView sendSubviewToBack:backImgView];
+    }
+        
     if ([trigger isEqualToString:@"History"]) {
         studentsTxt.text=[NSString stringWithFormat:@"%@",students];
         numbrStudLbl.text=@"Date:";

@@ -77,8 +77,6 @@
 		1872D1CE1AB6D224005B6DAC /* TutorLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1872D1CC1AB6D224005B6DAC /* TutorLoginViewController.xib */; };
 		1872D1D21AB6D23B005B6DAC /* ParentLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872D1D01AB6D23B005B6DAC /* ParentLoginViewController.m */; };
 		1872D1D31AB6D23B005B6DAC /* ParentLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1872D1D11AB6D23B005B6DAC /* ParentLoginViewController.xib */; };
-		1872D1D71AB6DA59005B6DAC /* TutorFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872D1D51AB6DA59005B6DAC /* TutorFirstViewController.m */; };
-		1872D1D81AB6DA59005B6DAC /* TutorFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1872D1D61AB6DA59005B6DAC /* TutorFirstViewController.xib */; };
 		1872D1E41AB6F0FE005B6DAC /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872D1E21AB6F0FE005B6DAC /* ForgotPasswordViewController.m */; };
 		1872D1E51AB6F0FE005B6DAC /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1872D1E31AB6F0FE005B6DAC /* ForgotPasswordViewController.xib */; };
 		1872D1FA1AB6F26B005B6DAC /* flower.png in Resources */ = {isa = PBXBuildFile; fileRef = 1872D1ED1AB6F26B005B6DAC /* flower.png */; };
@@ -216,8 +214,6 @@
 		18A24E361AC585460091D398 /* tutor-reg-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A24E121AC585460091D398 /* tutor-reg-btn@2x.png */; };
 		18A24E371AC585460091D398 /* user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A24E131AC585460091D398 /* user-icon@2x.png */; };
 		18A24E391AC5855F0091D398 /* main-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A24E381AC5855F0091D398 /* main-bg@2x.png */; };
-		18A3ADEF1AC3C48100F36DE3 /* ParentDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3ADED1AC3C48100F36DE3 /* ParentDashboardViewController.m */; };
-		18A3ADF01AC3C48100F36DE3 /* ParentDashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A3ADEE1AC3C48100F36DE3 /* ParentDashboardViewController.xib */; };
 		18A3ADF61AC3C68200F36DE3 /* ParentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3ADF41AC3C68200F36DE3 /* ParentListViewController.m */; };
 		18A3ADF71AC3C68200F36DE3 /* ParentListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A3ADF51AC3C68200F36DE3 /* ParentListViewController.xib */; };
 		18A3ADFB1AC3C81F00F36DE3 /* ParentListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A3ADF91AC3C81F00F36DE3 /* ParentListTableViewCell.m */; };
@@ -258,8 +254,6 @@
 		18B01E321AE0E3AA00EBDF46 /* email-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B01E301AE0E3AA00EBDF46 /* email-icon.png */; };
 		18B01E351AE0E3B400EBDF46 /* address-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B01E331AE0E3B400EBDF46 /* address-icon@2x.png */; };
 		18B01E361AE0E3B400EBDF46 /* email-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B01E341AE0E3B400EBDF46 /* email-icon@2x.png */; };
-		18B01E3A1AE0EAF800EBDF46 /* MyLessonsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B01E381AE0EAF800EBDF46 /* MyLessonsTableViewCell.m */; };
-		18B01E3B1AE0EAF800EBDF46 /* MyLessonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B01E391AE0EAF800EBDF46 /* MyLessonsTableViewCell.xib */; };
 		18B01E3E1AE1022600EBDF46 /* mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B01E3C1AE1022600EBDF46 /* mark.png */; };
 		18B01E3F1AE1022600EBDF46 /* unmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B01E3D1AE1022600EBDF46 /* unmark.png */; };
 		18B01E421AE1023100EBDF46 /* mark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B01E401AE1023100EBDF46 /* mark@2x.png */; };
@@ -281,8 +275,6 @@
 		18C063EA1AC14C3E00F97981 /* GetDetailCommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C063E91AC14C3E00F97981 /* GetDetailCommonView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18C063EE1AC14DAA00F97981 /* SlashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C063EC1AC14DAA00F97981 /* SlashScreen.m */; };
 		18C063EF1AC14DAB00F97981 /* SlashScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C063ED1AC14DAA00F97981 /* SlashScreen.xib */; };
-		18D0291D1ADCCF2800725645 /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D0291B1ADCCF2800725645 /* MyLessonsViewController.m */; };
-		18D0291E1ADCCF2800725645 /* MyLessonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D0291C1ADCCF2800725645 /* MyLessonsViewController.xib */; };
 		18D029211ADCD48A00725645 /* Lessons.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D029201ADCD48A00725645 /* Lessons.m */; };
 		18D029261ADD19A500725645 /* tab2-left-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D029221ADD19A500725645 /* tab2-left-active.png */; };
 		18D029271ADD19A500725645 /* tab2-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D029231ADD19A500725645 /* tab2-left.png */; };
@@ -362,6 +354,14 @@
 		D95A6A8B1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D95A6A891BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.m */; };
 		D95A6A8C1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D95A6A8A1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.xib */; };
 		D9EB272F1BDA621600B77B17 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D9EB272E1BDA621600B77B17 /* MBProgressHUD.m */; };
+		D9F5850B1E07AAA50053076C /* TutorFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F585091E07AAA50053076C /* TutorFirstViewController.m */; };
+		D9F5850C1E07AAA50053076C /* TutorFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F5850A1E07AAA50053076C /* TutorFirstViewController.xib */; };
+		D9F585101E07AACA0053076C /* ParentDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F5850E1E07AACA0053076C /* ParentDashboardViewController.m */; };
+		D9F585181E07AAF60053076C /* MyLessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F585131E07AAF60053076C /* MyLessonsViewController.m */; };
+		D9F585191E07AAF60053076C /* MyLessonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F585141E07AAF60053076C /* MyLessonsViewController.xib */; };
+		D9F5851A1E07AAF60053076C /* MyLessonsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F585161E07AAF60053076C /* MyLessonsTableViewCell.m */; };
+		D9F5851B1E07AAF60053076C /* MyLessonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F585171E07AAF60053076C /* MyLessonsTableViewCell.xib */; };
+		D9F5851E1E07E47A0053076C /* ParentDashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F5851D1E07E47A0053076C /* ParentDashboardViewController.xib */; };
 		D9FEBD661B58E76700BF9D72 /* StatementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FEBD641B58E76700BF9D72 /* StatementViewController.m */; };
 		D9FEBD671B58E76700BF9D72 /* StatementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FEBD651B58E76700BF9D72 /* StatementViewController.xib */; };
 		D9FEBD691B59156A00BF9D72 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FEBD681B59156A00BF9D72 /* CoreText.framework */; };
@@ -491,9 +491,6 @@
 		1872D1CF1AB6D23B005B6DAC /* ParentLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentLoginViewController.h; sourceTree = "<group>"; };
 		1872D1D01AB6D23B005B6DAC /* ParentLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentLoginViewController.m; sourceTree = "<group>"; };
 		1872D1D11AB6D23B005B6DAC /* ParentLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParentLoginViewController.xib; sourceTree = "<group>"; };
-		1872D1D41AB6DA59005B6DAC /* TutorFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorFirstViewController.h; sourceTree = "<group>"; };
-		1872D1D51AB6DA59005B6DAC /* TutorFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorFirstViewController.m; sourceTree = "<group>"; };
-		1872D1D61AB6DA59005B6DAC /* TutorFirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorFirstViewController.xib; sourceTree = "<group>"; };
 		1872D1E11AB6F0FE005B6DAC /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgotPasswordViewController.h; path = ../ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		1872D1E21AB6F0FE005B6DAC /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgotPasswordViewController.m; path = ../ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		1872D1E31AB6F0FE005B6DAC /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = ../ForgotPasswordViewController.xib; sourceTree = "<group>"; };
@@ -659,9 +656,6 @@
 		18A24E121AC585460091D398 /* tutor-reg-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutor-reg-btn@2x.png"; sourceTree = "<group>"; };
 		18A24E131AC585460091D398 /* user-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon@2x.png"; sourceTree = "<group>"; };
 		18A24E381AC5855F0091D398 /* main-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main-bg@2x.png"; sourceTree = "<group>"; };
-		18A3ADEC1AC3C48100F36DE3 /* ParentDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParentDashboardViewController.h; path = ../ParentDashboardViewController.h; sourceTree = "<group>"; };
-		18A3ADED1AC3C48100F36DE3 /* ParentDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParentDashboardViewController.m; path = ../ParentDashboardViewController.m; sourceTree = "<group>"; };
-		18A3ADEE1AC3C48100F36DE3 /* ParentDashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ParentDashboardViewController.xib; path = ../ParentDashboardViewController.xib; sourceTree = "<group>"; };
 		18A3ADF31AC3C68200F36DE3 /* ParentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentListViewController.h; sourceTree = "<group>"; };
 		18A3ADF41AC3C68200F36DE3 /* ParentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentListViewController.m; sourceTree = "<group>"; };
 		18A3ADF51AC3C68200F36DE3 /* ParentListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParentListViewController.xib; sourceTree = "<group>"; };
@@ -711,9 +705,6 @@
 		18B01E301AE0E3AA00EBDF46 /* email-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-icon.png"; sourceTree = "<group>"; };
 		18B01E331AE0E3B400EBDF46 /* address-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "address-icon@2x.png"; sourceTree = "<group>"; };
 		18B01E341AE0E3B400EBDF46 /* email-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email-icon@2x.png"; sourceTree = "<group>"; };
-		18B01E371AE0EAF800EBDF46 /* MyLessonsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsTableViewCell.h; sourceTree = "<group>"; };
-		18B01E381AE0EAF800EBDF46 /* MyLessonsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsTableViewCell.m; sourceTree = "<group>"; };
-		18B01E391AE0EAF800EBDF46 /* MyLessonsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyLessonsTableViewCell.xib; sourceTree = "<group>"; };
 		18B01E3C1AE1022600EBDF46 /* mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark.png; sourceTree = "<group>"; };
 		18B01E3D1AE1022600EBDF46 /* unmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unmark.png; sourceTree = "<group>"; };
 		18B01E401AE1023100EBDF46 /* mark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark@2x.png"; sourceTree = "<group>"; };
@@ -743,9 +734,6 @@
 		18C063EB1AC14DAA00F97981 /* SlashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlashScreen.h; path = ../SlashScreen.h; sourceTree = "<group>"; };
 		18C063EC1AC14DAA00F97981 /* SlashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlashScreen.m; path = ../SlashScreen.m; sourceTree = "<group>"; };
 		18C063ED1AC14DAA00F97981 /* SlashScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SlashScreen.xib; path = ../SlashScreen.xib; sourceTree = "<group>"; };
-		18D0291A1ADCCF2800725645 /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
-		18D0291B1ADCCF2800725645 /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
-		18D0291C1ADCCF2800725645 /* MyLessonsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyLessonsViewController.xib; sourceTree = "<group>"; };
 		18D0291F1ADCD48A00725645 /* Lessons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lessons.h; sourceTree = "<group>"; };
 		18D029201ADCD48A00725645 /* Lessons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lessons.m; sourceTree = "<group>"; };
 		18D029221ADD19A500725645 /* tab2-left-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab2-left-active.png"; sourceTree = "<group>"; };
@@ -841,6 +829,18 @@
 		D95A6A8A1BDE2CFF00D48AF3 /* downloadInvoiceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = downloadInvoiceTableViewCell.xib; sourceTree = "<group>"; };
 		D9EB272D1BDA621600B77B17 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		D9EB272E1BDA621600B77B17 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		D9F585081E07AAA50053076C /* TutorFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorFirstViewController.h; sourceTree = "<group>"; };
+		D9F585091E07AAA50053076C /* TutorFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorFirstViewController.m; sourceTree = "<group>"; };
+		D9F5850A1E07AAA50053076C /* TutorFirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TutorFirstViewController.xib; sourceTree = "<group>"; };
+		D9F5850D1E07AACA0053076C /* ParentDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentDashboardViewController.h; sourceTree = "<group>"; };
+		D9F5850E1E07AACA0053076C /* ParentDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentDashboardViewController.m; sourceTree = "<group>"; };
+		D9F585121E07AAF60053076C /* MyLessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsViewController.h; sourceTree = "<group>"; };
+		D9F585131E07AAF60053076C /* MyLessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsViewController.m; sourceTree = "<group>"; };
+		D9F585141E07AAF60053076C /* MyLessonsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyLessonsViewController.xib; sourceTree = "<group>"; };
+		D9F585151E07AAF60053076C /* MyLessonsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLessonsTableViewCell.h; sourceTree = "<group>"; };
+		D9F585161E07AAF60053076C /* MyLessonsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLessonsTableViewCell.m; sourceTree = "<group>"; };
+		D9F585171E07AAF60053076C /* MyLessonsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyLessonsTableViewCell.xib; sourceTree = "<group>"; };
+		D9F5851D1E07E47A0053076C /* ParentDashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ParentDashboardViewController.xib; sourceTree = "<group>"; };
 		D9FEBD631B58E76700BF9D72 /* StatementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementViewController.h; sourceTree = "<group>"; };
 		D9FEBD641B58E76700BF9D72 /* StatementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementViewController.m; sourceTree = "<group>"; };
 		D9FEBD651B58E76700BF9D72 /* StatementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatementViewController.xib; sourceTree = "<group>"; };
@@ -1267,9 +1267,9 @@
 		189A0E331AC91E7B004E0115 /* DASHBOARD */ = {
 			isa = PBXGroup;
 			children = (
-				1872D1D41AB6DA59005B6DAC /* TutorFirstViewController.h */,
-				1872D1D51AB6DA59005B6DAC /* TutorFirstViewController.m */,
-				1872D1D61AB6DA59005B6DAC /* TutorFirstViewController.xib */,
+				D9F585081E07AAA50053076C /* TutorFirstViewController.h */,
+				D9F585091E07AAA50053076C /* TutorFirstViewController.m */,
+				D9F5850A1E07AAA50053076C /* TutorFirstViewController.xib */,
 				D90E1F8D1BD9FE2100444F2A /* download.png */,
 			);
 			name = DASHBOARD;
@@ -1502,9 +1502,9 @@
 		18A723C31AD64375000B6EAA /* DASHBOARD */ = {
 			isa = PBXGroup;
 			children = (
-				18A3ADEC1AC3C48100F36DE3 /* ParentDashboardViewController.h */,
-				18A3ADED1AC3C48100F36DE3 /* ParentDashboardViewController.m */,
-				18A3ADEE1AC3C48100F36DE3 /* ParentDashboardViewController.xib */,
+				D9F5850D1E07AACA0053076C /* ParentDashboardViewController.h */,
+				D9F5850E1E07AACA0053076C /* ParentDashboardViewController.m */,
+				D9F5851D1E07E47A0053076C /* ParentDashboardViewController.xib */,
 				D90E1F901BDA0A3C00444F2A /* downloadInvoiceViewController.h */,
 				D90E1F911BDA0A3C00444F2A /* downloadInvoiceViewController.m */,
 				D90E1F921BDA0A3C00444F2A /* downloadInvoiceViewController.xib */,
@@ -1564,12 +1564,12 @@
 		18B00A751B0C851F00656AE4 /* My Lessons */ = {
 			isa = PBXGroup;
 			children = (
-				18D0291A1ADCCF2800725645 /* MyLessonsViewController.h */,
-				18D0291B1ADCCF2800725645 /* MyLessonsViewController.m */,
-				18D0291C1ADCCF2800725645 /* MyLessonsViewController.xib */,
-				18B01E371AE0EAF800EBDF46 /* MyLessonsTableViewCell.h */,
-				18B01E381AE0EAF800EBDF46 /* MyLessonsTableViewCell.m */,
-				18B01E391AE0EAF800EBDF46 /* MyLessonsTableViewCell.xib */,
+				D9F585121E07AAF60053076C /* MyLessonsViewController.h */,
+				D9F585131E07AAF60053076C /* MyLessonsViewController.m */,
+				D9F585141E07AAF60053076C /* MyLessonsViewController.xib */,
+				D9F585151E07AAF60053076C /* MyLessonsTableViewCell.h */,
+				D9F585161E07AAF60053076C /* MyLessonsTableViewCell.m */,
+				D9F585171E07AAF60053076C /* MyLessonsTableViewCell.xib */,
 				18B1EEF51B0AFE5E00079903 /* MyLessonDetailViewController.h */,
 				18B1EEF61B0AFE5E00079903 /* MyLessonDetailViewController.m */,
 				18B1EEF71B0AFE5E00079903 /* MyLessonDetailViewController.xib */,
@@ -1755,11 +1755,11 @@
 				18A3ADFC1AC3C81F00F36DE3 /* ParentListTableViewCell.xib in Resources */,
 				18B01E321AE0E3AA00EBDF46 /* email-icon.png in Resources */,
 				18A24E261AC585460091D398 /* listing-bg@2x.png in Resources */,
-				18B01E3B1AE0EAF800EBDF46 /* MyLessonsTableViewCell.xib in Resources */,
 				18B01E351AE0E3B400EBDF46 /* address-icon@2x.png in Resources */,
 				18A24E241AC585460091D398 /* history-icon@2x.png in Resources */,
 				1872D1FF1AB6F26B005B6DAC /* flower-redHeart.png in Resources */,
 				18D0293E1ADD19C400725645 /* circle_1_full.png in Resources */,
+				D9F5851E1E07E47A0053076C /* ParentDashboardViewController.xib in Resources */,
 				18D0295F1ADD19D600725645 /* circle_2_full@2x.png in Resources */,
 				18A24E231AC585460091D398 /* footer-sep@2x.png in Resources */,
 				18B01E241AE0E38500EBDF46 /* 29X29.png in Resources */,
@@ -1769,7 +1769,6 @@
 				05BDE0621B3BDD9700722CDD /* menuseparator.png in Resources */,
 				1872D1FC1AB6F26B005B6DAC /* cell-bg1.png in Resources */,
 				1872D21E1AB6F67F005B6DAC /* right-arrow@2x.png in Resources */,
-				18D0291E1ADCCF2800725645 /* MyLessonsViewController.xib in Resources */,
 				1872D2161AB6F67F005B6DAC /* bg-2-2.png in Resources */,
 				1872D1FE1AB6F26B005B6DAC /* flower-pinkHeart.png in Resources */,
 				18B01E3E1AE1022600EBDF46 /* mark.png in Resources */,
@@ -1781,7 +1780,6 @@
 				18D029631ADD19D600725645 /* circle_3_half@2x.png in Resources */,
 				18D0293D1ADD19C400725645 /* circle_0.png in Resources */,
 				05BDE05E1B3BDD9700722CDD /* connection-request-icon.png in Resources */,
-				1872D1D81AB6DA59005B6DAC /* TutorFirstViewController.xib in Resources */,
 				18B01E271AE0E38500EBDF46 /* 58X58.png in Resources */,
 				18B1EF031B0B34A400079903 /* CancelRequestsViewController.xib in Resources */,
 				18A24E2A1AC585460091D398 /* menu-btn@2x.png in Resources */,
@@ -1799,6 +1797,7 @@
 				05BDE0611B3BDD9700722CDD /* logout-icon.png in Resources */,
 				18B01E2C1AE0E38500EBDF46 /* 120X120.png in Resources */,
 				18D0295D1ADD19D600725645 /* circle_1_half@2x.png in Resources */,
+				D9F5850C1E07AAA50053076C /* TutorFirstViewController.xib in Resources */,
 				18A24E201AC585460091D398 /* edit-icon@2x.png in Resources */,
 				18A24DCD1AC584B70091D398 /* add-student-icon.png in Resources */,
 				18A3AE011AC3CEF100F36DE3 /* ParentDetailViewController.xib in Resources */,
@@ -1830,6 +1829,7 @@
 				18B01E251AE0E38500EBDF46 /* 40X40.png in Resources */,
 				18D0296D1ADD19E300725645 /* tab2-left@2x.png in Resources */,
 				05BDE05D1B3BDD9700722CDD /* box.png in Resources */,
+				D9F585191E07AAF60053076C /* MyLessonsViewController.xib in Resources */,
 				18A24E251AC585460091D398 /* input-field@2x.png in Resources */,
 				D90E1F941BDA0A3C00444F2A /* downloadInvoiceViewController.xib in Resources */,
 				1872D1C91AB6D206005B6DAC /* TutorRegistrationViewController.xib in Resources */,
@@ -1853,7 +1853,6 @@
 				977C53661B34008F00F25FDE /* cross.png in Resources */,
 				18A7ACF91ADBC8FD00F9C31E /* TutorHelper.sqlite in Resources */,
 				189A0E3E1AC91FF7004E0115 /* HistoryTableViewCell.xib in Resources */,
-				18A3ADF01AC3C48100F36DE3 /* ParentDashboardViewController.xib in Resources */,
 				18D029611ADD19D600725645 /* circle_2@2x.png in Resources */,
 				18A24DDD1AC584B70091D398 /* listing-bg.png in Resources */,
 				05BDE0651B3BDD9700722CDD /* My-student-icon.png in Resources */,
@@ -1872,6 +1871,7 @@
 				18A24DE01AC584B70091D398 /* main-bg.png in Resources */,
 				180005C61AD4F9270073BED2 /* fees-icon@2x.png in Resources */,
 				18D029491ADD19C400725645 /* circle_4.png in Resources */,
+				D9F5851B1E07AAF60053076C /* MyLessonsTableViewCell.xib in Resources */,
 				18A24E2D1AC585460091D398 /* parent-login-btn@2x.png in Resources */,
 				1872D1BF1AB6C15B005B6DAC /* InstructionsViewController.xib in Resources */,
 				18B1EF091B0B3AE600079903 /* CancelRequestsTableViewCell.xib in Resources */,
@@ -2035,12 +2035,12 @@
 				18B1EEFD1B0B0DE100079903 /* StudentLessonDetailTableViewCell.m in Sources */,
 				187F89401AC01B160090AAAE /* ASIDownloadCache.m in Sources */,
 				18B1EF1D1B0B603000079903 /* ParentMergeViewController.m in Sources */,
+				D9F585101E07AACA0053076C /* ParentDashboardViewController.m in Sources */,
 				1872D2251AB712D0005B6DAC /* AddStudentViewController.m in Sources */,
 				1872D19B1AB6C023005B6DAC /* AppDelegate.m in Sources */,
 				18A7AD081ADBE1BF00F9C31E /* LessonRequestViewController.m in Sources */,
 				1835A92F1ABFFCC600D94612 /* SBJsonStreamParserAccumulator.m in Sources */,
 				97C9E9711B3000A400217422 /* lessonDetailTableViewCell.m in Sources */,
-				18B01E3A1AE0EAF800EBDF46 /* MyLessonsTableViewCell.m in Sources */,
 				1835A9331ABFFCC600D94612 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				97C9E95E1B2FEE1500217422 /* lessonDetailsOC.m in Sources */,
 				18A3AE051AC3EC7B00F36DE3 /* StudentDetailTableViewCell.m in Sources */,
@@ -2056,7 +2056,6 @@
 				189A0E371AC91EB9004E0115 /* HistoryViewController.m in Sources */,
 				1872D1CD1AB6D224005B6DAC /* TutorLoginViewController.m in Sources */,
 				18C063EA1AC14C3E00F97981 /* GetDetailCommonView.m in Sources */,
-				1872D1D71AB6DA59005B6DAC /* TutorFirstViewController.m in Sources */,
 				18D029211ADCD48A00725645 /* Lessons.m in Sources */,
 				1867E3A51AF8E39A002264D3 /* TutorDetailViewController.m in Sources */,
 				18B1EF021B0B34A400079903 /* CancelRequestsViewController.m in Sources */,
@@ -2080,8 +2079,10 @@
 				978A17EB1B4A5B7A00AADFCD /* tutorCalenderViewController.m in Sources */,
 				D9FEBD721B591F2600BF9D72 /* PDFViewController.m in Sources */,
 				1835A9351ABFFCC600D94612 /* SBJsonTokeniser.m in Sources */,
+				D9F585181E07AAF60053076C /* MyLessonsViewController.m in Sources */,
 				1887EDCD1AC1719200E7527F /* FMDatabaseAdditions.m in Sources */,
 				1835A92E1ABFFCC600D94612 /* SBJsonStreamParser.m in Sources */,
+				D9F5850B1E07AAA50053076C /* TutorFirstViewController.m in Sources */,
 				18A7ACFD1ADBD64400F9C31E /* StudentRequestsTableViewCell.m in Sources */,
 				1835A9311ABFFCC600D94612 /* SBJsonStreamParserState.m in Sources */,
 				180005D21AD509F30073BED2 /* ConnectRequset.m in Sources */,
@@ -2089,6 +2090,7 @@
 				1835A93A1ABFFCD500D94612 /* SBJSONScanner.m in Sources */,
 				187F89421AC01B160090AAAE /* ASIHTTPRequest.m in Sources */,
 				187F893D1AC01B160090AAAE /* ASIAuthenticationDialog.m in Sources */,
+				D9F5851A1E07AAF60053076C /* MyLessonsTableViewCell.m in Sources */,
 				187F893E1AC01B160090AAAE /* ASIDataCompressor.m in Sources */,
 				97E99C691B26BF9900A6B7D9 /* updateRequest.m in Sources */,
 				18B00A731B0C45ED00656AE4 /* StudentMergeViewController.m in Sources */,
@@ -2099,10 +2101,8 @@
 				1887EDCF1AC1719200E7527F /* FMDatabaseQueue.m in Sources */,
 				1872D1E41AB6F0FE005B6DAC /* ForgotPasswordViewController.m in Sources */,
 				97C9E97A1B300E0A00217422 /* paymentListOC.m in Sources */,
-				18A3ADEF1AC3C48100F36DE3 /* ParentDashboardViewController.m in Sources */,
 				189A0E451AC9274C004E0115 /* HistoryDetailViewController.m in Sources */,
 				187F89431AC01B170090AAAE /* ASIInputStream.m in Sources */,
-				18D0291D1ADCCF2800725645 /* MyLessonsViewController.m in Sources */,
 				1835A93D1ABFFCE300D94612 /* NSString+SBJSON.m in Sources */,
 				18B1EEF81B0AFE5E00079903 /* MyLessonDetailViewController.m in Sources */,
 				180005CE1AD504D40073BED2 /* ConnectionListViewController.m in Sources */,

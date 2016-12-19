@@ -25,6 +25,9 @@
     IBOutlet UILabel *approvedStatusLbl;
     IBOutlet UILabel *numbrStudLbl;
     IBOutlet UILabel *studentsTxt;
+    IBOutlet UILabel *rejected_by;
+    IBOutlet UIView *backgroundView;
+    IBOutlet UIView *contentView;
 }
--(void)setLabelText:(NSString*)detailStr :(NSString*)timeStr :(NSString*)DaysStr :(NSString*)students :(NSString*)duration :(NSString*)trigger:(NSString*)isApproved ;
+-(void)setLabelText:(NSString*)detailStr :(NSString*)timeStr :(NSString*)DaysStr :(NSString*)students :(NSString*)duration :(NSString*)trigger:(NSString*)isApproved :(NSString*)rejected_by;
 @end
