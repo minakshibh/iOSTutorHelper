@@ -16,6 +16,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AddStudentViewController.h"
 
+#define POSITIVE(n) ((n) < 0 ? 0 - (n) : (n))
+
 @interface AddLessonViewController ()
 
 @end
@@ -388,12 +390,12 @@
         [alert show];
         return;
     }
-    else if (addStudentList.count==0)
-    {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Tutor Helper" message:@"Please Select the Students from List." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-        [alert show];
-        return;
-    }
+//    else if (addStudentList.count==0)
+//    {
+//        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Tutor Helper" message:@"Please Select the Students from List." delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+//        [alert show];
+//        return;
+//    }
     
     
     NSString *dateStart =lesson_date;
@@ -534,12 +536,13 @@
         duration=[NSString stringWithFormat:@"%d:%@",hours,minsStr];
         
     }
-    
-    
+        
+    minsStr = [NSString stringWithFormat:@"%d",POSITIVE([minsStr intValue])];
+        
     NSString *studentlist=[[addStudentList valueForKey:@"description"] componentsJoinedByString:@","];
     days = [[daysArray valueForKey:@"description"] componentsJoinedByString:@","];
     
-    _postData = [NSString stringWithFormat:@"tutor_id=%@&topic=%@&description=%@&start_time=%@&end_time=%@&days=%@&lesson_date=%@&duration=%@&is_rec=%@&student_list=%@&req_sender=%@&end_date=%@", tutor_id,topic,topicDetail,startTime,endTime,days,lesson_date,minsStr,is_recur,studentlist,trigger,endLessonDate];
+    _postData = [NSString stringWithFormat:@"t  utor_id=%@&topic=%@&description=%@&start_time=%@&end_time=%@&days=%@&lesson_date=%@&duration=%@&is_rec=%@&student_list=%@&req_sender=%@&end_date=%@", tutor_id,topic,topicDetail,startTime,endTime,days,lesson_date,minsStr,is_recur,studentlist,trigger,endLessonDate];
     
     webservice=2;
     [kappDelegate ShowIndicator];

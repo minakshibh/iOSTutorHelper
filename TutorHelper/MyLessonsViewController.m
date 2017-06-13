@@ -531,6 +531,8 @@
     MyLessonDetailViewController*lessonRequstVC=[[MyLessonDetailViewController alloc]initWithNibName:@"MyLessonDetailViewController" bundle:[NSBundle mainBundle]];
     lessonRequstVC.lessonObj=lessonObj1;
     lessonRequstVC.lessonDetailView=dateDetail;
+    if ([seeRejectedLessons isEqualToString: @"YES"])
+    { lessonRequstVC.setTitleLabel = @"Rejected Lesson Detail"; }
     [self.navigationController pushViewController:lessonRequstVC animated:YES];
 }
 

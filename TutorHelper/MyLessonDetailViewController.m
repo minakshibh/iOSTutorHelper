@@ -45,6 +45,11 @@
         studentsBackView.hidden=NO;
     }
 
+    if (self.setTitleLabel != nil)
+    {
+        titleLabel.text = self.setTitleLabel;
+    }
+    
     
     NSString*startTimeStr=lessonObj.lesson_start_time;
     NSString*endTimeStr=lessonObj.lesson_end_time;

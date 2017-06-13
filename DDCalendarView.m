@@ -42,9 +42,7 @@ NSMutableArray *Dayarray;
 //        [Dayarray addObject:@"10-04-2015"];
 
         heartRecordArray=[[NSMutableArray alloc] init];
-        
-        [self getHeartRecords];
-        
+                
         coountDaysNextMonth=0;
         
 		self.delegate = theDelegate;
@@ -239,7 +237,6 @@ NSMutableArray *Dayarray;
 		NSDateComponents *dateParts = [calendar components:unitFlags fromDate:[NSDate date]];
 		currentMonth = [dateParts month];
 		currentYear = [dateParts year];
-        [self getdataFromSqlite];
         
 		[self updateCalendarForMonth:currentMonth forYear:currentYear];
     }
@@ -299,7 +296,14 @@ NSMutableArray *Dayarray;
 
 
 - (void)updateCalendarForMonth:(int)month forYear:(int)year {
-    [self  getDateListFromDatabase:[[NSUserDefaults standardUserDefaults ]valueForKey:@"tutor_id"]];
+    NSString *userId;
+    if (![triggerView isEqualToString:@"Parent"])
+    {
+        userId=[[NSUserDefaults standardUserDefaults ]valueForKey:@"tutor_id"];
+    }else{
+        userId=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults ]valueForKey:@"pin"]];
+    }
+    [self  getDateListFromDatabase:userId];
     char *months[12] = {"January", "Febrary", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"};
     monthLabel.text = [NSString stringWithFormat:@"%s %d", months[month - 1], year];
@@ -338,11 +342,26 @@ NSMutableArray *Dayarray;
     int yearStr = [[formatter1 stringFromDate:[NSDate date]]intValue];
     int dateStr = [[formatter2 stringFromDate:[NSDate date]]intValue];
 
+    // change value of Dayarray to the selected mont, year
+    NSMutableArray *dummyDateArray = [[NSMutableArray alloc]init];
+    for (int r = 0 ; r < Dayarray.count ; r++){
+        NSDictionary*dateDict=[Dayarray  objectAtIndex:r];
+        NSString*dateString=[dateDict  valueForKey:@"lessonDate"];
+
+        NSString *m = [dateString componentsSeparatedByString:@"-"][1];
+        NSString *y = [dateString componentsSeparatedByString:@"-"][0];
+
+        if (([m intValue] == month) && ([y intValue] == year)){
+            [dummyDateArray addObject:[Dayarray objectAtIndex:r]];
+        }
+    }
+    Dayarray = [[NSMutableArray alloc]init];
+    Dayarray = dummyDateArray;
+    
     int day = 1;
     for (int i = 0; i < 6; i++) {
         for(int j = 0; j < 7; j++) {
             int buttonNumber = i * 7 + j;
-            
             DayButton *button = [dayButtons objectAtIndex:buttonNumber];
             [button setBackgroundImage:nil forState:UIControlStateNormal];
 
@@ -367,13 +386,12 @@ NSMutableArray *Dayarray;
                 {
 //                    [button setBackgroundImage:[UIImage imageNamed:@"circle_2.png"] forState:UIControlStateNormal];
                 }
-
+                
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                
+                [dateFormatter setDateFormat:@"yyyy-MM-dd"];
                 for (int j=0; j<Dayarray.count; j++)
                 {
-                    
-                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                    
-                    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
                     
                     NSDate *selectedDate = [[NSDate alloc] init];
                     
@@ -694,9 +712,8 @@ NSMutableArray *Dayarray;
     FMResultSet *results = [database executeQuery:queryString];
     
     NSDictionary*dict=[[NSDictionary alloc]init];
-    
+    Dayarray = [[NSMutableArray alloc]init];
     while([results next])
-        
     {
         NSString*lessonsStr=[results stringForColumn:@"NumberOfLessons"];
         

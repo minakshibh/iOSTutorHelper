@@ -22,7 +22,6 @@
     
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
-    
     backView.layer.borderColor=[UIColor clearColor].CGColor;
     backView.layer.borderWidth=2.0f;
     backView.layer.cornerRadius=5.0;

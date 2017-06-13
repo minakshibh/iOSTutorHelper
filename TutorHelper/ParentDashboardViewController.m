@@ -111,8 +111,13 @@
     }
     
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
+    [self setCalander];
+}
+
+-(void)setCalander {
     if (IS_IPHONE_5)
     {
         calendarView = [[DDCalendarView alloc] initWithFrame:CGRectMake(10, 100, 300, 300) fontName:@"Helvetica" delegate:self trigger:@"Parent"];
@@ -512,6 +517,7 @@
     }
     [database close];
     [self setCounts];
+    [self setCalander];
 }
 
 -(void)setCounts

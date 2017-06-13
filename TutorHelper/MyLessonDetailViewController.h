@@ -29,6 +29,7 @@
     IBOutlet UILabel *sunday;
     IBOutlet UITextView *noteslbl;
     IBOutlet UIView *studentsBackView;
+    IBOutlet UILabel *titleLabel;
     NSArray*studentListArray;
     
     IBOutlet UILabel *detailBgLbl;
@@ -37,6 +38,6 @@
 - (IBAction)backBttn:(id)sender;
 - (IBAction)updateNotesBtn:(id)sender;
 @property(strong,nonatomic)Lessons*lessonObj;
-@property(strong,nonatomic)NSString*lessonDetailView;
+@property(strong,nonatomic)NSString*lessonDetailView,*setTitleLabel;
 @property(strong,nonatomic)NSString*trigger;
 @end

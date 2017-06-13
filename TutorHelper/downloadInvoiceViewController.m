@@ -250,10 +250,10 @@ MBProgressHUD *hud;
             label.text = valueStr;
             
             url = [[months valueForKey:@"invoicelink"]objectAtIndex:i];
-            urlStr = [NSString stringWithFormat:@"%@",[url objectAtIndex:indexPath.row]];
+            urlStr = [url objectAtIndex:indexPath.row];
             
             
-            if(![urlStr isEqualToString:@""])
+            if(![urlStr isEqual:[NSNull null]])
             {
                 //[cell addSubview:btnurl];
 //                btnurl=nil;
@@ -296,12 +296,15 @@ MBProgressHUD *hud;
             
             
             url = [[months valueForKey:@"invoicelink"]objectAtIndex:i];
-            urlStr = [NSString stringWithFormat:@"%@",[url objectAtIndex:indexPath.row]];
+            urlStr = [url objectAtIndex:indexPath.row];
             
             
             break;
         }
     }
+    
+if(![urlStr isEqual:[NSNull null]])
+{
     
     if ([urlStr rangeOfString:@"http://" options:NSCaseInsensitiveSearch].location != NSNotFound)
     {
@@ -343,6 +346,8 @@ MBProgressHUD *hud;
     [webView loadRequest:requestObj];
     viewPOPUP.hidden = NO;
     [self.view bringSubviewToFront:viewPOPUP];
+ }
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
 - (void)urlClicked:(UIControl *)sender
 {
